@@ -30,6 +30,8 @@ public class Post {
     @NotBlank
     private String content;
     private String genre;
+
+    @JsonIgnore
     private Long CategoryId;
     @ManyToOne(fetch = FetchType.LAZY)
 
@@ -44,5 +46,13 @@ public class Post {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Long getCategoryId() {
+        return CategoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        CategoryId = categoryId;
     }
 }

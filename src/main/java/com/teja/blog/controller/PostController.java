@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/")
 public class PostController {
@@ -49,6 +51,18 @@ public class PostController {
     public List<Post> getAllPosts() {
         return postRepository.findAll();
 
+    }
+
+    @GetMapping("post/{id}")
+    public ResponseEntity<?> getPost(Post post, @PathVariable Long id, BindingResult result) {
+
+        try {
+            return new ResponseEntity<Post>(postRepository.findById(id).orElseThrow(Exception::new), HttpStatus.ACCEPTED);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity("No Post found with the Id " + id , HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("posts")

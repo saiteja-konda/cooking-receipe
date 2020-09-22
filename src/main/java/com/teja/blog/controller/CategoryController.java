@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/")
 public class CategoryController {
@@ -31,9 +32,10 @@ public class CategoryController {
     }
 
     @GetMapping("category")
-    public ResponseEntity getcategory(Model model) {
-        model.addAttribute("categories", categoryRepository.findAll());
-        return ResponseEntity.ok(model);
+    public List<Category> getcategory(Category category) {
+//        model.addAttribute("categories", categoryRepository.findAll());
+        return categoryRepository.findAll();
+
     }
 }
 
