@@ -1,0 +1,45 @@
+
+//CREATE
+###
+POST http://localhost:8080/post
+Content-Type: application/json
+
+{
+  "title": "abcd",
+  "content": "saitejakda@gmail.com",
+  "description": "abcdef",
+  "tags": [
+  ],
+  "categoryId": "5"
+}
+###
+//READ
+###
+GET http://localhost:8080/post
+###
+GET http://localhost:8080/post/count
+###
+GET http://localhost:8080/post/genres/Music
+###
+#GET http://localhost:8080/post/genres/count/Coding
+###
+//UPDATE
+###
+PUT http://localhost:8080/post/6
+Content-Type: application/json
+
+{
+  "title": "abc",
+  "content": "saitejakda@gmail.com",
+  "description": "abcde",
+  "tags": [
+    {
+      "name": "new"
+    }
+  ],
+  "categoryId": "4"
+}
+###
+//DELETE
+###
+DELETE http://localhost:8080/post/3

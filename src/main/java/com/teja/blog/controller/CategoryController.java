@@ -33,7 +33,6 @@ public class CategoryController {
 
     @GetMapping("category")
     public List<Category> getcategory(Category category) {
-//        model.addAttribute("categories", categoryRepository.findAll());
         return categoryRepository.findAll();
 
     }

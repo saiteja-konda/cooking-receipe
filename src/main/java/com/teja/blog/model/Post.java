@@ -1,12 +1,17 @@
 package com.teja.blog.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "Post")
 @Table(name = "post")
@@ -26,10 +31,16 @@ public class Post {
     @NotBlank
     @Lob
     private String description;
+
     @Lob
     @NotBlank
     private String content;
     private String genre;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "postedOn")
+    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
+    private Date postedOn = new Date();
 
     @JsonIgnore
     private Long CategoryId;
