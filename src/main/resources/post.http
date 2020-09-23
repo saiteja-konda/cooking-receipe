@@ -8,9 +8,7 @@ Content-Type: application/json
   "title": "abcd",
   "content": "saitejakda@gmail.com",
   "description": "abcdef",
-  "tags": [
-  ],
-  "categoryId": "5"
+  "categoryId": "1"
 }
 ###
 //READ
@@ -19,13 +17,13 @@ GET http://localhost:8080/post
 ###
 GET http://localhost:8080/post/count
 ###
-GET http://localhost:8080/post/genres/Music
+GET http://localhost:8080/post/genres/Entertainment
 ###
 #GET http://localhost:8080/post/genres/count/Coding
 ###
 //UPDATE
 ###
-PUT http://localhost:8080/post/6
+PUT http://localhost:8080/post/2
 Content-Type: application/json
 
 {
@@ -37,9 +35,9 @@ Content-Type: application/json
       "name": "new"
     }
   ],
-  "categoryId": "4"
+  "categoryId": "1"
 }
 ###
 //DELETE
 ###
-DELETE http://localhost:8080/post/3
+DELETE http://localhost:8080/post/2

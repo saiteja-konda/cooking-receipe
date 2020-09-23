@@ -54,6 +54,10 @@ public class PostController {
     public List<Post> getPostbyGenre(@PathVariable String genre) {
         return postRepository.findAllByGenre(genre);
     }
+    @GetMapping("post/genres/count/{genre}")
+    public int getPostbyGenreCount(@PathVariable String genre) {
+        return postRepository.findAllByGenre(genre).size();
+    }
 
 //    @GetMapping("post/genres/count/{genre}")
 //    public Long getPostCountByGenre(@PathVariable String genre) {
@@ -99,7 +103,6 @@ public class PostController {
 
         try {
             postRepository.deleteById(id);
-
             return new ResponseEntity(" Post Deleted successfully with the Id " + id, HttpStatus.ACCEPTED);
 
         } catch (Exception e) {

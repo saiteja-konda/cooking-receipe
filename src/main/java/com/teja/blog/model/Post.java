@@ -1,14 +1,10 @@
 package com.teja.blog.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,6 +16,9 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,12 +39,19 @@ public class Post {
     @Temporal(TemporalType.DATE)
     @Column(name = "postedOn")
     @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
+
+
     private Date postedOn = new Date();
 
     @JsonIgnore
     private Long CategoryId;
-    @ManyToOne(fetch = FetchType.LAZY)
 
+//    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Tag.class , mappedBy = "posts",cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+//
+//    private Set<Tag> tags = new HashSet<>();
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumn(name = "categoryId", insertable = false, updatable = false)
     private Category category;
@@ -66,4 +72,5 @@ public class Post {
     public void setCategoryId(Long categoryId) {
         CategoryId = categoryId;
     }
+
 }
