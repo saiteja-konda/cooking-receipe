@@ -3,7 +3,7 @@ package com.teja.blog.model;
 import lombok.*;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.Email;
 
 @Data
 @Getter
@@ -11,15 +11,15 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "Category")
-@Table(name = "category")
-public class Category {
-
+@Entity(name = "Subscribers")
+@Table(name = "subscribers")
+public class Subcribers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
     private String name;
-
+    @Email
+    @Column(unique = true)
+    private String email;
 
 }

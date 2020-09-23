@@ -69,4 +69,6 @@ public class PostController {
     public ResponseEntity getposts(Model model) {
         return ResponseEntity.ok(model);
     }
+
+    //TODO have to delete and update posts
 }

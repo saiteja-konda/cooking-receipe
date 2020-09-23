@@ -1,0 +1,14 @@
+
+
+###
+GET http://localhost:8080/subscribers
+Accept: application/json
+
+###
+POST http://localhost:8080/subscribers
+Content-Type: application/json
+
+{
+  "name":"abc",
+  "email":"saitejakonda@gmail.com"
+}
