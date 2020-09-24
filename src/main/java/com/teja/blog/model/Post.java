@@ -5,9 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity(name = "Post")
 @Table(name = "post")
@@ -30,26 +28,27 @@ public class Post {
     @NotBlank
     @Lob
     private String description;
-
+    private String type;
     @Lob
     @NotBlank
     private String content;
     private String genre;
+    private int views;
+    private int likes;
 
+    @OneToMany(
+            mappedBy = "post",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Comment> comment;
     @Temporal(TemporalType.DATE)
     @Column(name = "postedOn")
     @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
-
-
     private Date postedOn = new Date();
 
     @JsonIgnore
     private Long CategoryId;
-
-//    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Tag.class , mappedBy = "posts",cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-//
-//    private Set<Tag> tags = new HashSet<>();
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
@@ -72,5 +71,7 @@ public class Post {
     public void setCategoryId(Long categoryId) {
         CategoryId = categoryId;
     }
+
+
 
 }

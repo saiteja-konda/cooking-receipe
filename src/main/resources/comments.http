@@ -1,0 +1,10 @@
+##
+POST http://localhost:8080/comment/2
+Content-Type: application/json
+
+{
+"comment":"test",
+"displayName":"saitea",
+  "skey":"hiIKNie",
+  "postId": 2
+}

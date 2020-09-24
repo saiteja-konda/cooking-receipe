@@ -26,7 +26,7 @@
                 private String tagIds;
 
 
-                ///comments    @OneToMany(mappedBy = "blog")
+                ///comment    @OneToMany(mappedBy = "blog")
                                 private List<Comment> commentList = new ArrayList<>();
 
 

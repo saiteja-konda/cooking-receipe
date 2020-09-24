@@ -35,6 +35,10 @@ public class PostController {
     public ResponseEntity<?> getPostbyId(@PathVariable Long id) {
 
         try {
+            Post  post  = postRepository.findById(id).orElse(null);
+            post.setViews(post.getViews() + 1);
+            postRepository.save(post);
+
             return new ResponseEntity(postRepository.findById(id).orElseThrow(Exception::new), HttpStatus.ACCEPTED);
 
         } catch (Exception e) {
@@ -59,14 +63,23 @@ public class PostController {
         return postRepository.findAllByGenre(genre).size();
     }
 
-//    @GetMapping("post/genres/count/{genre}")
-//    public Long getPostCountByGenre(@PathVariable String genre) {
-//        return postRepository.
-//    }
+    @GetMapping("post/type/{type}")
+    public List <Post> getPostbyType (@PathVariable String type) {
+        return postRepository.findPostsByTypeOrderByPostedOnAsc(type);
+    }
+
+    @GetMapping("like/{id}")
+    public int like( @PathVariable Long id){
+        Post post = postRepository.findById(id).orElseThrow(null);
+        post.setLikes(post.getLikes() +1);
+        postRepository.save(post);
+        return post.getLikes();
+    }
+
 
     //Private Routes  CREATE UPDATE DELETE
     @PostMapping("post")
-    public ResponseEntity<?> createPost(@Valid @RequestBody Post post, BindingResult result) throws Exception {
+    public ResponseEntity<?> createPost(@Valid @RequestBody Post post, BindingResult result){
 
         Optional<Category> opt = categoryRepository.findById(post.getCategoryId());
         post.setGenre(opt.get().getName());
@@ -82,6 +95,7 @@ public class PostController {
         postRepository.save(post);
         return new ResponseEntity<Post>(post, HttpStatus.CREATED);
     }
+
 
     @PutMapping("post/{id}")
     public ResponseEntity<?> updatePost(@Valid @RequestBody Post oldPost, @PathVariable Long id) {

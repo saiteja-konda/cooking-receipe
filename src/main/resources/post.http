@@ -15,11 +15,15 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/post
 ###
+GET http://localhost:8080/post/4
+###
 GET http://localhost:8080/post/count
 ###
-GET http://localhost:8080/post/genres/Entertainment
+GET http://localhost:8080/post/genres/News
 ###
-#GET http://localhost:8080/post/genres/count/Coding
+GET http://localhost:8080/post/type/Trending
+###
+GET http://localhost:8080h/like/4
 ###
 //UPDATE
 ###

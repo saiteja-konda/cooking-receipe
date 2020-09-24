@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post,Long> {
    List<Post> findAllByGenre(String genre);
-   Post countByGenre(String genre);
+   List<Post> findPostsByTypeOrderByPostedOnAsc(String type);
 }

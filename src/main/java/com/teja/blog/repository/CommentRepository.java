@@ -1,7 +1,11 @@
 package com.teja.blog.repository;
 
-import com.teja.blog.model.Comments;
+import com.teja.blog.model.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CommentRepository extends JpaRepository<Comments,Long> {
+import java.util.Optional;
+
+public interface CommentRepository extends JpaRepository<Comment,Long> {
+
+    Comment findByPostId(Long id);
 }
