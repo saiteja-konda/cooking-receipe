@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/")
+@CrossOrigin({"http://localhost:3000","https://saiteja-blog.herokuapp.com"})
 public class SubscriberController {
     @Autowired
     public SubscriberRepository subscriberRepository;
