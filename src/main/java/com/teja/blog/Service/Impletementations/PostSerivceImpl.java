@@ -1,4 +1,6 @@
 package com.teja.blog.Service.Impletementations;
 
-public class PostSerivceImpl {
+import com.teja.blog.Service.Services.PostService;
+
+public class PostSerivceImpl implements PostService {
 }

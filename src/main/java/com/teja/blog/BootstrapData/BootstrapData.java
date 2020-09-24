@@ -22,14 +22,14 @@ public class BootstrapData implements CommandLineRunner {
         System.out.println("Started in Faker");
         Faker faker = new Faker();
 
-//        for (int i = 0; i < 10; i++) {
-//            Post post = new Post();
-//            post.setTitle(faker.programmingLanguage().name());
-//            post.setContent(faker.lorem().paragraph(3));
-//            post.setDescription(faker.lorem().sentence(15));
+        for (int i = 0; i < 10; i++) {
+            Post post = new Post();
+            post.setTitle(faker.programmingLanguage().name());
+            post.setContent(faker.lorem().paragraph(3));
+            post.setDescription(faker.lorem().sentence(15));
 //            post.setCategoryId(faker.number().numberBetween(1,10));
-//            postRepository.save(post);
-//        }
+            postRepository.save(post);
+        }
 //        for (int i = 0; i < 4; i++) {
 //            Category category = new Category();
 //            category.setName(faker.music().genre());

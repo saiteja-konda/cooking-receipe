@@ -1,4 +1,4 @@
-package com.teja.blog.Service;
+package com.teja.blog.Service.Services;
 
 public interface PostService {
 }

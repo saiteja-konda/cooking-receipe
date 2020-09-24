@@ -1,4 +1,6 @@
 package com.teja.blog.Service.Impletementations;
 
-public class CategoryServiceImpl {
+import com.teja.blog.Service.Services.CategoryService;
+
+public class CategoryServiceImpl implements CategoryService {
 }

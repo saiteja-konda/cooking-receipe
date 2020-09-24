@@ -3,11 +3,20 @@ POST http://localhost:8080/subscribers
 Content-Type: application/json
 
 {
-  "name":"abc",
-  "email":"saitejakonda@gmail.com"
+  "name":"Saiteja",
+  "email":"saitejmac@icloud.com"
 }
 ###
 
 ###
 GET http://localhost:8080/subscribers
 ###
+POST http://localhost:8080/sendingEmail
+Content-Type: application/json
+
+{
+  "to": "kondasaitej@protonmail.com",
+  "from": "kondasaitej@gmail.com",
+  "subject": "hello world",
+  "name": "Testing"
+}

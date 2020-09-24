@@ -1,4 +1,6 @@
 package com.teja.blog.Service.Impletementations;
 
-public class CommentServiceImpl {
+import com.teja.blog.Service.Services.CommentsService;
+
+public class CommentServiceImpl implements CommentsService {
 }

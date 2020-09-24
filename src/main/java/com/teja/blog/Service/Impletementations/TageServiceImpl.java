@@ -1,4 +1,6 @@
 package com.teja.blog.Service.Impletementations;
 
-public class TageServiceImpl {
+import com.teja.blog.Service.Services.TageService;
+
+public class TageServiceImpl implements TageService {
 }
