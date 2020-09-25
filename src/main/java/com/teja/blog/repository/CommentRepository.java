@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface CommentRepository extends JpaRepository<Comment,Long> {
 
     Comment findByPostId(Long id);
+    int countCommentsByPostId(Long id);
+
 }

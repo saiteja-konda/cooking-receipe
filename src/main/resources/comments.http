@@ -1,10 +1,14 @@
 ##
-POST http://localhost:8080/comment/2
+POST http://localhost:8080/comment/12
 Content-Type: application/json
 
 {
 "comment":"test",
-"displayName":"saitea",
-  "skey":"hiIKNie",
-  "postId": 2
+"commnetedBy":"saitea"
 }
+
+
+###
+GET http://localhost:8080/comment+/2
+###
+GET http://localhost:8080/comment-/2

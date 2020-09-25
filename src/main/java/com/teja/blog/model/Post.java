@@ -41,12 +41,12 @@ public class Post {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<Comment> comment;
+    private List<Comment> comments;
     @Temporal(TemporalType.DATE)
     @Column(name = "postedOn")
     @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     private Date postedOn = new Date();
-
+    private int totalComments;
     @JsonIgnore
     private Long CategoryId;
 
@@ -71,7 +71,6 @@ public class Post {
     public void setCategoryId(Long categoryId) {
         CategoryId = categoryId;
     }
-
 
 
 }

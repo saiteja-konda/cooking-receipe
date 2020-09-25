@@ -3,6 +3,7 @@ package com.teja.blog.controller;
 import com.teja.blog.model.Category;
 import com.teja.blog.model.Post;
 import com.teja.blog.repository.CategoryRepository;
+import com.teja.blog.repository.CommentRepository;
 import com.teja.blog.repository.PostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class PostController {
     private PostRepository postRepository;
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
 
     //Public Routes GET
     @GetMapping("post")
@@ -66,6 +70,11 @@ public class PostController {
     @GetMapping("post/type/{type}")
     public List <Post> getPostbyType (@PathVariable String type) {
         return postRepository.findPostsByTypeOrderByPostedOnAsc(type);
+    }
+
+    @GetMapping("post/comments/count/{id}")
+    public int getCommentCount(@PathVariable Long id){
+        return commentRepository.countCommentsByPostId(id);
     }
 
     @GetMapping("like/{id}")

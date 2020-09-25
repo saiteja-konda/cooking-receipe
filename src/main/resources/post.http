@@ -15,7 +15,7 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/post
 ###
-GET http://localhost:8080/post/4
+GET http://localhost:8080/post/12
 ###
 GET http://localhost:8080/post/count
 ###
@@ -23,7 +23,9 @@ GET http://localhost:8080/post/genres/News
 ###
 GET http://localhost:8080/post/type/Trending
 ###
-GET http://localhost:8080h/like/4
+GET http://localhost:8080/like/4
+###
+GET http://localhost:8080/post/comments/count/8
 ###
 //UPDATE
 ###

@@ -11,12 +11,3 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/subscribers
 ###
-POST http://localhost:8080/sendingEmail
-Content-Type: application/json
-
-{
-  "to": "kondasaitej@protonmail.com",
-  "from": "kondasaitej@gmail.com",
-  "subject": "hello world",
-  "name": "Testing"
-}
