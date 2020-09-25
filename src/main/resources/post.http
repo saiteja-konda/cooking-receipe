@@ -15,7 +15,7 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/post
 ###
-GET http://localhost:8080/post/12
+GET http://localhost:8080/post/24
 ###
 GET http://localhost:8080/post/count
 ###
@@ -23,24 +23,21 @@ GET http://localhost:8080/post/genres/News
 ###
 GET http://localhost:8080/post/type/Trending
 ###
-GET http://localhost:8080/like/4
+GET http://localhost:8080/like/24
 ###
 GET http://localhost:8080/post/comments/count/8
 ###
+GET  http://localhost:8080/posts/type/Featured
+###
 //UPDATE
 ###
-PUT http://localhost:8080/post/2
+PUT http://localhost:8080/post/24
 Content-Type: application/json
 
 {
   "title": "abc",
   "content": "saitejakda@gmail.com",
   "description": "abcde",
-  "tags": [
-    {
-      "name": "new"
-    }
-  ],
   "categoryId": "1"
 }
 ###

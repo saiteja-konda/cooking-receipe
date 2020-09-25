@@ -1,5 +1,6 @@
 package com.teja.blog.controller;
 
+import com.teja.blog.Query.Postpage;
 import com.teja.blog.model.Category;
 import com.teja.blog.model.Post;
 import com.teja.blog.repository.CategoryRepository;
@@ -7,6 +8,9 @@ import com.teja.blog.repository.CommentRepository;
 import com.teja.blog.repository.PostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -83,6 +87,11 @@ public class PostController {
         post.setLikes(post.getLikes() +1);
         postRepository.save(post);
         return post.getLikes();
+    }
+    @GetMapping("posts/type/{type}")
+    public Page<Post> getTypedPost(@PathVariable String type){
+        Postpage pg = new Postpage();
+        return postRepository.findAllByType(type,  PageRequest.of(pg.getPageNumber(),pg.getPageSize(),pg.getDirection(),pg.getSortBy()));
     }
 
 
