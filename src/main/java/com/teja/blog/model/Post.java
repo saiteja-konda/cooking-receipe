@@ -48,6 +48,7 @@ public class Post  implements Serializable {
             orphanRemoval = true
     )
     private List<Comment> comments;
+
     @Temporal(TemporalType.DATE)
     @Column(name = "postedOn")
     @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)

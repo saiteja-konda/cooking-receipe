@@ -42,7 +42,7 @@ GET http://localhost:8080/post/tags/Omega
 ###
 //UPDATE
 ###
-PUT http://localhost:8080/post/3
+PUT http://localhost:8080/post/1
 Content-Type: application/json
 
 {

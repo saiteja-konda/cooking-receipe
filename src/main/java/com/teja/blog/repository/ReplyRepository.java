@@ -1,4 +1,7 @@
 package com.teja.blog.repository;
 
-public interface ReplyRepository {
+import com.teja.blog.model.Reply;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReplyRepository extends JpaRepository<Reply, Long> {
 }
