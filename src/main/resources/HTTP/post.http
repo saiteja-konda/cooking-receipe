@@ -8,15 +8,23 @@ Content-Type: application/json
     "title": "abcde",
     "content": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
     "description": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
-    "categoryId": "12",
-    "type": "Latest"
+    "categoryId": "1",
+    "type": "Latest",
+    "tags": [
+        {
+            "name": "Alpha"
+        },
+        {
+            "name": "Beta"
+        }
+    ]
 }
 ###
 //READ
 ###
 GET http://localhost:8080/post
 ###
-GET http://localhost:8080/post/1
+GET http://localhost:8080/post/2
 ###
 GET http://localhost:8080/post/count
 ###
@@ -32,14 +40,22 @@ GET  http://localhost:8080/posts/type/Featured
 ###
 //UPDATE
 ###
-PUT http://localhost:8080/post/22
+PUT http://localhost:8080/post/2
 Content-Type: application/json
 
 {
-  "title": "abc",
-  "content": "saitejakda@gmail.com",
-  "description": "abcde",
-  "categoryId": "1"
+    "title": "abc",
+    "content": "saitejakda@gmail.com",
+    "description": "abcde",
+    "categoryId": "1",
+    "tags": [
+        {
+            "name": "Deta"
+        },
+        {
+            "name": "Omega"
+        }
+    ]
 }
 ###
 //DELETE

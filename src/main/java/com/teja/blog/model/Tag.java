@@ -1,7 +1,6 @@
 package com.teja.blog.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,7 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,14 +26,35 @@ public class Tag implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private long id;
 
-    @NotNull
-    @Size(min = 2)
-    @Column(name = "name", nullable = false)
     private String name;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "tags")
+    private List<Post> posts = new ArrayList<Post>();
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public Tag entries(List<Post> posts) {
+        this.posts = posts;
+        return this;
+    }
+
+    public Tag addEntry(Post post) {
+        this.posts.add(post);
+        post.getTags().add(this);
+        return this;
+    }
+
+    public Tag removeEntry(Post post) {
+        this.posts.remove(post);
+        post.getTags().remove(this);
+        return this;
+    }
 
 
 }

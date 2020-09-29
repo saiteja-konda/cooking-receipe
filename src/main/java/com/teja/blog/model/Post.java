@@ -61,6 +61,13 @@ public class Post  implements Serializable {
     @JoinColumn(name = "categoryId", insertable = false, updatable = false)
     private Category category;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private Set<Tag> tags = new HashSet<>();
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
 
     public Category getCategory() {
         return category;

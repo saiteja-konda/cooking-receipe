@@ -131,6 +131,7 @@ public class PostController {
             post.setDescription(oldPost.getDescription());
             post.setContent(oldPost.getContent());
             post.setCategoryId(oldPost.getCategoryId());
+            post.setTags(oldPost.getTags());
 
             // set genre with reference to categoryId
             Optional<Category> opt = categoryRepository.findById(oldPost.getCategoryId());
