@@ -21,6 +21,10 @@ public interface PostRepository extends JpaRepository<Post,Long> {
     @Transactional(readOnly = true)
     Set<Post> findByTagsName(String name);
 
-
-
 }
+/*
+//TODO
+* @Transactional(readOnly = true)
+Page<Post> findByTagsName(String name, Pageable pageable);
+*
+* */
