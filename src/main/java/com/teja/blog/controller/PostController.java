@@ -18,9 +18,10 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.FileNotFoundException;
 import java.util.*;
 
-@CrossOrigin({"http://localhost:3000","https://saiteja-blog.herokuapp.com"})
+@CrossOrigin({"http://localhost:3000", "https://saiteja-blog.herokuapp.com"})
 @RestController
 @RequestMapping("/")
 public class PostController {
@@ -43,7 +44,7 @@ public class PostController {
     public ResponseEntity<?> getPostbyId(@PathVariable Long id) {
 
         try {
-            Post  post  = postRepository.findById(id).orElse(null);
+            Post post = postRepository.findById(id).orElse(null);
             post.setViews(post.getViews() + 1);
             postRepository.save(post);
 
@@ -66,68 +67,82 @@ public class PostController {
     public List<Post> getPostbyGenre(@PathVariable String genre) {
         return postRepository.findAllByGenre(genre);
     }
+
     @GetMapping("post/genres/count/{genre}")
     public int getPostbyGenreCount(@PathVariable String genre) {
         return postRepository.findAllByGenre(genre).size();
     }
 
     @GetMapping("post/type/{type}")
-    public List <Post> getPostbyType (@PathVariable String type) {
+    public List<Post> getPostbyType(@PathVariable String type) {
         return postRepository.findPostsByTypeOrderByPostedOnAsc(type);
     }
 
     @GetMapping("post/comments/count/{id}")
-    public int getCommentCount(@PathVariable Long id){
+    public int getCommentCount(@PathVariable Long id) {
         return commentRepository.countCommentsByPostId(id);
     }
 
     @GetMapping("like/{id}")
-    public int like( @PathVariable Long id){
+    public int like(@PathVariable Long id) {
         Post post = postRepository.findById(id).orElseThrow(null);
-        post.setLikes(post.getLikes() +1);
+        post.setLikes(post.getLikes() + 1);
         postRepository.save(post);
         return post.getLikes();
     }
+
     @GetMapping("posts/type/{type}")
-    public Page<Post> getTypedPost(@PathVariable String type){
+    public Page<Post> getTypedPost(@PathVariable String type) {
         Postpage pg = new Postpage();
-        return postRepository.findAllByType(type,  PageRequest.of(pg.getPageNumber(),pg.getPageSize(),pg.getDirection(),pg.getSortBy()));
+        return postRepository.findAllByType(type, PageRequest.of(pg.getPageNumber(), pg.getPageSize(), pg.getDirection(), pg.getSortBy()));
     }
 
 
     //Private Routes  CREATE UPDATE DELETE
     @PostMapping("post")
-    public ResponseEntity<?> createPost(@Valid @RequestBody Post post, BindingResult result){
+    public ResponseEntity<?> createPost(@Valid @RequestBody Post post, BindingResult result) {
+        try {
+            Optional<Category> opt = categoryRepository.findById(post.getCategoryId());
+            post.setGenre(opt.get().getName());
 
-        Optional<Category> opt = categoryRepository.findById(post.getCategoryId());
-        post.setGenre(opt.get().getName());
-
-        if (result.hasErrors()) {
-            Map<String, String> errorMap = new HashMap<>();
-            for (FieldError error : result.getFieldErrors()) {
-                errorMap.put(error.getField(), error.getDefaultMessage());
+            if (result.hasErrors()) {
+                Map<String, String> errorMap = new HashMap<>();
+                for (FieldError error : result.getFieldErrors()) {
+                    errorMap.put(error.getField(), error.getDefaultMessage());
+                }
+                return new ResponseEntity<Map<String, String>>(errorMap, HttpStatus.BAD_REQUEST);
             }
-            return new ResponseEntity<Map<String, String>>(errorMap, HttpStatus.BAD_REQUEST);
+
+            postRepository.save(post);
+            return new ResponseEntity<Post>(post, HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        postRepository.save(post);
-        return new ResponseEntity<Post>(post, HttpStatus.CREATED);
+        return new ResponseEntity("No Category found with the given Id please create one" , HttpStatus.BAD_REQUEST);
     }
 
 
     @PutMapping("post/{id}")
-    public ResponseEntity<?> updatePost(@Valid @RequestBody Post oldPost, @PathVariable Long id) {
+    public ResponseEntity<?> updatePost(@Valid @RequestBody Post oldPost, @PathVariable Long id) throws FileNotFoundException {
+        try {
+            Post post = postRepository.findById(id).orElseThrow(FileNotFoundException::new);
+            post.setTitle(oldPost.getTitle());
+            post.setDescription(oldPost.getDescription());
+            post.setContent(oldPost.getContent());
+            post.setCategoryId(oldPost.getCategoryId());
 
-        Post post = postRepository.findById(id).orElse(null);
-        post.setTitle(oldPost.getTitle());
-        post.setDescription(oldPost.getDescription());
-        post.setContent(oldPost.getContent());
-        post.setCategoryId(oldPost.getCategoryId());
-        // set genre with reference to categoryId
-        Optional<Category> opt = categoryRepository.findById(oldPost.getCategoryId());
-        oldPost.setGenre(opt.get().getName());
-        postRepository.save(post);
-        return new ResponseEntity("update successfully", HttpStatus.CREATED);
+            // set genre with reference to categoryId
+            Optional<Category> opt = categoryRepository.findById(oldPost.getCategoryId());
+            oldPost.setGenre(opt.get().getName());
+            postRepository.save(post);
+            return new ResponseEntity("Post update successfully", HttpStatus.CREATED);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity("Post with given id is not found", HttpStatus.BAD_REQUEST);
+
     }
 
     @DeleteMapping("post/{id}")

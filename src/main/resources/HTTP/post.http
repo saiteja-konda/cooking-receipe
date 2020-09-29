@@ -8,7 +8,7 @@ Content-Type: application/json
     "title": "abcde",
     "content": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
     "description": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
-    "categoryId": "1",
+    "categoryId": "12",
     "type": "Latest"
 }
 ###
@@ -32,7 +32,7 @@ GET  http://localhost:8080/posts/type/Featured
 ###
 //UPDATE
 ###
-PUT http://localhost:8080/post/2
+PUT http://localhost:8080/post/22
 Content-Type: application/json
 
 {

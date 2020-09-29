@@ -9,9 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.FileNotFoundException;
 import java.util.List;
 
-@CrossOrigin({"http://localhost:3000","https://saiteja-blog.herokuapp.com"})
+@CrossOrigin({"http://localhost:3000", "https://saiteja-blog.herokuapp.com"})
 @RestController
 @RequestMapping("/")
 public class CategoryController {
@@ -32,10 +33,37 @@ public class CategoryController {
     }
 
     @GetMapping("category")
-    public List<Category> getcategory(Category category) {
+    public List<Category> getcategory() {
         return categoryRepository.findAll();
 
     }
+
+    @PutMapping("category/{id}")
+    public ResponseEntity<?> updateCategory( @RequestBody Category oldCategory,@PathVariable Long id ) throws FileNotFoundException {
+        try {
+            Category category = categoryRepository.findById(id).orElseThrow(FileNotFoundException::new);
+            category.setName(oldCategory.getName());
+            categoryRepository.save(category);
+            return new ResponseEntity(" Category update successfully", HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity("Category with given id is not found", HttpStatus.BAD_REQUEST);
+
+    }
+
+    @DeleteMapping("category/{id}")
+    public ResponseEntity<?> deleteCategory(@PathVariable Long id) {
+        try {
+            categoryRepository.deleteById(id);
+            return new ResponseEntity(" Category Deleted successfully with the Id " + id, HttpStatus.ACCEPTED);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity("No Category found with the Id " + id, HttpStatus.BAD_REQUEST);
+    }
 }
+
 
 

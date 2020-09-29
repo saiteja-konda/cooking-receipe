@@ -1,0 +1,19 @@
+###
+POST http://localhost:8080/category
+Content-Type: application/json
+
+{
+"name":"PacMan"
+}
+
+###
+GET http://localhost:8080/category
+###
+DELETE http://localhost:8080/category/2
+###
+PUT http://localhost:8080/category/3
+Content-Type: application/json
+
+{
+    "name": "PacMan Bullshit"
+}
