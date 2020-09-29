@@ -1,0 +1,8 @@
+###
+POST http://localhost:8080/reply/1
+Content-Type: application/json
+
+{
+    "reply": "My first reply",
+    "repliedBy": "Deno JS"
+}

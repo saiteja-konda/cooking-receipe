@@ -25,6 +25,7 @@ public class CommentsController {
 
     @PostMapping("comment/{id}")
     private Comment addComment(@RequestBody Comment comment, @PathVariable(value = "id") Long id) {
+
         Post p = postRepository.findById(id).orElse(null);
         int x = p.getTotalComments();
         p.setTotalComments(x + 1);
@@ -33,6 +34,7 @@ public class CommentsController {
         return postRepository.findById(id).map(post -> {
             comment.setPost(post);
             post.getComments().add(comment);
+//Sending email notification
 
             Map<String, Object> model = new HashMap<>();
             model.put("Title", post.getTitle());

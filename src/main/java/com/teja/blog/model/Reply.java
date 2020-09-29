@@ -18,6 +18,7 @@ import java.util.Date;
 @Setter
 public class Reply {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Lob
     private String reply;

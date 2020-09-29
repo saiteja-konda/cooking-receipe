@@ -7,8 +7,8 @@ Content-Type: application/json
 "commentor":"test121"
 }
 
-
 ###
 GET http://localhost:8080/comment+/12
+
 ###
 GET http://localhost:8080/comment-/2
