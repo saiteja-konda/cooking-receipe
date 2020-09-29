@@ -1,8 +1,14 @@
 ###
-POST http://localhost:8080/reply/1
+POST http://localhost:8080/reply/2
 Content-Type: application/json
 
 {
     "reply": "My first reply",
     "repliedBy": "Deno JS"
 }
+
+###
+GET http://localhost:8080/reply+/2
+
+###
+GET http://localhost:8080/reply-/2

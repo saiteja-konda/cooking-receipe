@@ -28,6 +28,7 @@ public class Comment {
     private String comment;
     private String commentor;
     private String skey;
+    private int totalReplies;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore

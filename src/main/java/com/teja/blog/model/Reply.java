@@ -26,7 +26,7 @@ public class Reply {
     @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     private Date repliedOn = new Date();
-
+    private int votes;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore

@@ -8,7 +8,10 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/comment+/12
+GET http://localhost:8080/comment+/2
 
 ###
 GET http://localhost:8080/comment-/2
+
+###
+DELETE  http://localhost:8080/comment/1

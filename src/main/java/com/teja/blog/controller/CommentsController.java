@@ -7,6 +7,8 @@ import com.teja.blog.model.Post;
 import com.teja.blog.repository.CommentRepository;
 import com.teja.blog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -62,5 +64,13 @@ public class CommentsController {
         c.setVotes(x - 1);
         commentRepository.save(c);
         return commentRepository.findById(id).orElse(null);
+    }
+
+    //Only Admin can perform this Request
+
+    @DeleteMapping("comment/{id}")
+    public ResponseEntity<?> deleteComment(@PathVariable Long id){
+        commentRepository.deleteById(id);
+        return new ResponseEntity(" Comment Deleted successfully with the Id " + id, HttpStatus.ACCEPTED);
     }
 }
