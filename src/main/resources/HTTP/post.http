@@ -9,19 +9,14 @@ Content-Type: application/json
     "content": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
     "description": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
     "categoryId": "1",
-    "type": "Latest",
-    "tags": [
-        {
-            "name": "abc"
-        }
-    ]
+    "type": "Latest"
 }
 ###
 //READ
 ###
 GET http://localhost:8080/post
 ###
-GET http://localhost:8080/post/24
+GET http://localhost:8080/post/1
 ###
 GET http://localhost:8080/post/count
 ###
@@ -29,7 +24,7 @@ GET http://localhost:8080/post/genres/News
 ###
 GET http://localhost:8080/post/type/Trending
 ###
-GET http://localhost:8080/like/24
+GET http://localhost:8080/like/2
 ###
 GET http://localhost:8080/post/comments/count/8
 ###
@@ -37,7 +32,7 @@ GET  http://localhost:8080/posts/type/Featured
 ###
 //UPDATE
 ###
-PUT http://localhost:8080/post/4
+PUT http://localhost:8080/post/2
 Content-Type: application/json
 
 {
@@ -49,4 +44,4 @@ Content-Type: application/json
 ###
 //DELETE
 ###
-DELETE http://localhost:8080/post/2
+DELETE http://localhost:8080/post/1

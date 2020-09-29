@@ -1,14 +1,14 @@
 ##
-POST http://localhost:8080/comment/7
+POST http://localhost:8080/comment/2
 Content-Type: application/json
 
 {
 "comment":"This is really amazing, i can't believe its true",
-"commentor":"Saiteja"
+"commentor":"test121"
 }
 
 
 ###
-GET http://localhost:8080/comment+/2
+GET http://localhost:8080/comment+/12
 ###
 GET http://localhost:8080/comment-/2
