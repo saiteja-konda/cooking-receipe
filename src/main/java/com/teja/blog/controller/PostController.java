@@ -97,6 +97,11 @@ public class PostController {
         return postRepository.findAllByType(type, PageRequest.of(pg.getPageNumber(), pg.getPageSize(), pg.getDirection(), pg.getSortBy()));
     }
 
+    @GetMapping("post/tags/{name}")
+    public Set<Post> getPostsByTags(@PathVariable String name) {
+        return postRepository.findByTagsName(name);
+    }
+
 
     //Private Routes  CREATE UPDATE DELETE
     @PostMapping("post")
@@ -119,7 +124,7 @@ public class PostController {
             e.printStackTrace();
         }
 
-        return new ResponseEntity("No Category found with the given Id please create one" , HttpStatus.BAD_REQUEST);
+        return new ResponseEntity("No Category found with the given Id please create one", HttpStatus.BAD_REQUEST);
     }
 
 

@@ -5,7 +5,7 @@ POST http://localhost:8080/post
 Content-Type: application/json
 
 {
-    "title": "abcde",
+    "title": "Second post",
     "content": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
     "description": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
     "categoryId": "1",
@@ -38,9 +38,11 @@ GET http://localhost:8080/post/comments/count/8
 ###
 GET  http://localhost:8080/posts/type/Featured
 ###
+GET http://localhost:8080/post/tags/Omega
+###
 //UPDATE
 ###
-PUT http://localhost:8080/post/2
+PUT http://localhost:8080/post/3
 Content-Type: application/json
 
 {
@@ -50,7 +52,7 @@ Content-Type: application/json
     "categoryId": "1",
     "tags": [
         {
-            "name": "Deta"
+            "name": "Alpha"
         },
         {
             "name": "Omega"

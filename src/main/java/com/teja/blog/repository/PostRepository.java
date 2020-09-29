@@ -6,9 +6,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface PostRepository extends JpaRepository<Post,Long> {
    List<Post> findAllByGenre(String genre);
@@ -16,6 +18,8 @@ public interface PostRepository extends JpaRepository<Post,Long> {
 
    Page<Post> findAllByType(String type, Pageable pageable);
 
+    @Transactional(readOnly = true)
+    Set<Post> findByTagsName(String name);
 
 
 
