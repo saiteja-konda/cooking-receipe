@@ -1,10 +1,10 @@
 ##
-POST http://localhost:8080/comment/12
+POST http://localhost:8080/comment/7
 Content-Type: application/json
 
 {
-"comment":"test",
-"commnetedBy":"saitea"
+"comment":"This is really amazing, i can't believe its true",
+"commentor":"Saiteja"
 }
 
 

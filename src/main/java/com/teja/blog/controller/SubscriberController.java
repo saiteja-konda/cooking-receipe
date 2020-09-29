@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin({"http://localhost:3000","https://saiteja-blog.herokuapp.com"})
+@CrossOrigin({"http://localhost:3000", "https://saiteja-blog.herokuapp.com"})
 public class SubscriberController {
     @Autowired
     public SubscriberRepository subscriberRepository;
@@ -21,7 +21,7 @@ public class SubscriberController {
     public SubscribersServiceImpl subscribersService;
 
     @PostMapping("/subscribers")
-    public ResponseEntity<?> crateSubscriber(@RequestBody Subcribers subcribers){
+    public ResponseEntity<?> crateSubscriber(@RequestBody Subcribers subcribers) {
         subscriberRepository.save(subcribers);
         Map<String, Object> model = new HashMap<>();
         model.put("Name", subcribers.getName());
@@ -31,7 +31,18 @@ public class SubscriberController {
     }
 
     @GetMapping("/subscribers")
-    public List<Subcribers> getSubscriber(){
-    return subscriberRepository.findAll();
+    public List<Subcribers> getSubscriber() {
+        List<Subcribers> subcribersList = subscriberRepository.findAll();
+        subcribersList.forEach(s -> System.out.println(s.getEmail()));
+        return subscriberRepository.findAll();
+    }
+
+    @GetMapping("/test")
+    public String sendBroadcast() {
+        Map<String, Object> model = new HashMap<>();
+        model.put("Name", "name here");
+        model.put("location", "Bangalore,India");
+        subscribersService.broadcast(model);
+        return "";
     }
 }

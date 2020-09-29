@@ -5,10 +5,16 @@ POST http://localhost:8080/post
 Content-Type: application/json
 
 {
-  "title": "abcd",
-  "content": "saitejakda@gmail.com",
-  "description": "abcdef",
-  "categoryId": "1"
+    "title": "abcde",
+    "content": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
+    "description": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
+    "categoryId": "1",
+    "type": "Latest",
+    "tags": [
+        {
+            "name": "abc"
+        }
+    ]
 }
 ###
 //READ
@@ -31,7 +37,7 @@ GET  http://localhost:8080/posts/type/Featured
 ###
 //UPDATE
 ###
-PUT http://localhost:8080/post/24
+PUT http://localhost:8080/post/4
 Content-Type: application/json
 
 {

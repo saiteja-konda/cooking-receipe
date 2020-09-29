@@ -2,9 +2,11 @@ package com.teja.blog.model;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity(name = "Post")
@@ -14,10 +16,14 @@ import java.util.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Post {
+public class Post  implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_id")
@@ -55,7 +61,7 @@ public class Post {
     @JoinColumn(name = "categoryId", insertable = false, updatable = false)
     private Category category;
 
-    @JsonBackReference
+
     public Category getCategory() {
         return category;
     }
@@ -70,6 +76,23 @@ public class Post {
 
     public void setCategoryId(Long categoryId) {
         CategoryId = categoryId;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Post)) {
+            return false;
+        }
+        return id != null && id.equals(((Post) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
     }
 
 
