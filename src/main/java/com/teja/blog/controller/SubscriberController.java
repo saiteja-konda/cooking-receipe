@@ -39,12 +39,12 @@ public class SubscriberController {
         return subscriberRepository.findAll();
     }
 
-    @GetMapping("/test")
-    public String sendBroadcast() {
-        Map<String, Object> model = new HashMap<>();
-        model.put("Name", "name here");
-        model.put("location", "Bangalore,India");
-        subscribersService.broadcast(model);
-        return "";
-    }
+//    @GetMapping("/test")
+//    public String sendBroadcast() {
+//        Map<String, Object> model = new HashMap<>();
+//        model.put("Name", "name here");
+//        model.put("location", "Bangalore,India");
+//        subscribersService.broadcast(model);
+//        return "";
+//    }
 }
