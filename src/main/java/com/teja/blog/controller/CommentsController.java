@@ -1,5 +1,6 @@
 package com.teja.blog.controller;
 
+import com.teja.blog.Annotation.OperationLog;
 import com.teja.blog.Service.Impletementations.CommentServiceImpl;
 import com.teja.blog.model.Comment;
 
@@ -26,6 +27,7 @@ public class CommentsController {
     public CommentServiceImpl commentService;
 
     @PostMapping("comment/{id}")
+    @OperationLog("New commented added")
     private Comment addComment(@RequestBody Comment comment, @PathVariable(value = "id") Long id) {
 
         Post p = postRepository.findById(id).orElse(null);
@@ -69,6 +71,7 @@ public class CommentsController {
     //Only Admin can perform this Request
 
     @DeleteMapping("comment/{id}")
+    @OperationLog("Comment Deleted")
     public ResponseEntity<?> deleteComment(@PathVariable Long id){
         commentRepository.deleteById(id);
         return new ResponseEntity(" Comment Deleted successfully with the Id " + id, HttpStatus.ACCEPTED);

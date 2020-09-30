@@ -1,5 +1,6 @@
 package com.teja.blog.controller;
 
+import com.teja.blog.Annotation.OperationLog;
 import com.teja.blog.Service.Impletementations.SubscribersServiceImpl;
 import com.teja.blog.model.Subcribers;
 import com.teja.blog.repository.SubscriberRepository;
@@ -21,6 +22,7 @@ public class SubscriberController {
     public SubscribersServiceImpl subscribersService;
 
     @PostMapping("/subscribers")
+    @OperationLog("Added new Subscriber")
     public ResponseEntity<?> crateSubscriber(@RequestBody Subcribers subcribers) {
         subscriberRepository.save(subcribers);
         Map<String, Object> model = new HashMap<>();

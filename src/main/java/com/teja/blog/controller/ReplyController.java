@@ -1,5 +1,6 @@
 package com.teja.blog.controller;
 
+import com.teja.blog.Annotation.OperationLog;
 import com.teja.blog.model.Comment;
 import com.teja.blog.model.Reply;
 import com.teja.blog.repository.CommentRepository;
@@ -19,6 +20,7 @@ public class ReplyController {
     public CommentRepository commentRepository;
 
     @PostMapping("reply/{id}")
+    @OperationLog("New Reply to comment")
     public Reply addReply(@RequestBody Reply reply, @PathVariable Long id) {
 
         Comment c = commentRepository.findById(id).orElse(null);

@@ -1,6 +1,7 @@
 package com.teja.blog.controller;
 
 import Constants.CommonConstants;
+import com.teja.blog.Annotation.OperationLog;
 import com.teja.blog.utils.FileUploadUtil;
 import com.teja.blog.utils.Result;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,7 @@ public class ImageUploadController {
     private String saveDir;
 
     @PostMapping("/upload/{type}")
+    @OperationLog("New image uploaded")
     public Result uploadImg(@RequestParam(value = "file") MultipartFile file,
                             @PathVariable String type) {
         String fileName = file.getOriginalFilename();
@@ -41,6 +43,7 @@ public class ImageUploadController {
     }
 
     @DeleteMapping("/admin/delete")
+    @OperationLog("image Deleted")
     public Result deleteImg(@RequestParam(value = "fileName") String fileName) {
         String filePath = saveDir + fileName;
         File file = new File(filePath);

@@ -48,6 +48,7 @@ public class PostController {
     }
 
     @GetMapping("post/{id}")
+    @VisitLog
     public ResponseEntity<?> getPostbyId(@PathVariable Long id) {
 
         try {
