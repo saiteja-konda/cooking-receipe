@@ -1,0 +1,4 @@
+logging:
+  level:
+      root: info
+      com.teja.blog: debug

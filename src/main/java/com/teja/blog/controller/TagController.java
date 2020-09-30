@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin({"http://localhost:3000","https://saiteja-blog.herokuapp.com"})
+@CrossOrigin({"http://localhost:3000", "https://saiteja-blog.herokuapp.com"})
 @RestController
 @RequestMapping("/")
 public class TagController {
@@ -19,7 +19,14 @@ public class TagController {
     public TagRepository tagRepository;
 
     @GetMapping("tags")
-    public List<Tag> getTags(){
+    public List<Tag> getTags() {
         return tagRepository.findAll();
     }
+
+    /*
+     * post tags
+     * delete tags
+     * TODO
+     *  */
+
 }

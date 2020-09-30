@@ -50,9 +50,12 @@ GET  http://localhost:8080/posts/type/Featured
 GET http://localhost:8080/post/tags/Omega
 
 ###
+GET http://localhost:8080/post/search/doloribus
+
+###
 //UPDATE
 ###
-PUT http://localhost:8080/post/1
+PUT http://localhost:8080/post/2
 Content-Type: application/json
 
 {

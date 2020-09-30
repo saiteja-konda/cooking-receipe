@@ -1,12 +1,17 @@
 package com.teja.blog.controller;
 
+import com.teja.blog.Annotation.OperationLog;
+import com.teja.blog.Annotation.VisitLog;
 import com.teja.blog.Query.Postpage;
+import com.teja.blog.Service.Impletementations.PostSerivceImpl;
+import com.teja.blog.Service.Services.PostService;
 import com.teja.blog.model.Category;
 import com.teja.blog.model.Post;
 import com.teja.blog.repository.CategoryRepository;
 import com.teja.blog.repository.CommentRepository;
 import com.teja.blog.repository.PostRepository;
 
+import com.teja.blog.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,12 +35,14 @@ public class PostController {
     private PostRepository postRepository;
     @Autowired
     private CategoryRepository categoryRepository;
-
     @Autowired
     private CommentRepository commentRepository;
+    @Autowired
+    private PostSerivceImpl postSerivce;
 
     //Public Routes GET
     @GetMapping("post")
+    @VisitLog
     public List<Post> getAllPosts() {
         return postRepository.findAll();
     }
@@ -102,9 +109,14 @@ public class PostController {
         return postRepository.findByTagsName(name);
     }
 
-
+    @GetMapping("/post/search/{keyword}")
+    public Result searchPost(@PathVariable String keyword) {
+        System.out.println(keyword);
+        return new Result(this.postSerivce.searchPost(keyword));
+    }
     //Private Routes  CREATE UPDATE DELETE
     @PostMapping("post")
+    @OperationLog("Added a new post")
     public ResponseEntity<?> createPost(@Valid @RequestBody Post post, BindingResult result) {
         try {
             Optional<Category> opt = categoryRepository.findById(post.getCategoryId());
@@ -129,6 +141,7 @@ public class PostController {
 
 
     @PutMapping("post/{id}")
+    @OperationLog("updated post")
     public ResponseEntity<?> updatePost(@Valid @RequestBody Post oldPost, @PathVariable Long id) throws FileNotFoundException {
         try {
             Post post = postRepository.findById(id).orElseThrow(FileNotFoundException::new);
@@ -152,6 +165,7 @@ public class PostController {
     }
 
     @DeleteMapping("post/{id}")
+    @OperationLog("Deleted post")
     public ResponseEntity<?> deletePost(@PathVariable Long id) {
 
         try {
