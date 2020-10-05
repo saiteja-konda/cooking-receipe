@@ -26,7 +26,7 @@ Content-Type: application/json
 GET http://localhost:8080/post
 
 ###
-GET http://localhost:8080/post/2
+GET http://localhost:8080/post/1
 
 ###
 GET http://localhost:8080/post/count
@@ -47,7 +47,7 @@ GET http://localhost:8080/post/comments/count/8
 GET  http://localhost:8080/posts/type/Featured
 
 ###
-GET http://localhost:8080/post/tags/Omega
+GET http://localhost:8080/post/tags/Alpha
 
 ###
 GET http://localhost:8080/post/search/doloribus
