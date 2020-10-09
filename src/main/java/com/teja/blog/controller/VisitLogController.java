@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Calendar;
 import java.util.Date;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/admin/visitLog")
 public class VisitLogController {

@@ -5,17 +5,18 @@ POST http://localhost:8080/post
 Content-Type: application/json
 
 {
-    "title": "Second post",
+    "title": "Action Thriller John Wick 4",
     "content": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
     "description": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
-    "categoryId": "1",
+    "categoryId": "2",
+    "imageUrl": "https://source.unsplash.com/user/erondu/1600x900",
     "type": "Latest",
     "tags": [
         {
-            "name": "Alpha"
+            "name": "Netflix"
         },
         {
-            "name": "Beta"
+            "name": "Thirller"
         }
     ]
 }
@@ -26,7 +27,7 @@ Content-Type: application/json
 GET http://localhost:8080/post
 
 ###
-GET http://localhost:8080/post/1
+GET http://localhost:8080/post/24
 
 ###
 GET http://localhost:8080/post/count
@@ -50,10 +51,19 @@ GET  http://localhost:8080/posts/type/Featured
 GET http://localhost:8080/post/tags/Alpha
 
 ###
-GET http://localhost:8080/post/search/doloribus
+GET http://localhost:8080/post/search/muder
 
 ###
 //UPDATE
+###
+//1265 × 464
+###
+PUT  http://localhost:8080/post/24
+Content-Type: application/json
+
+{
+    "imageUrl": "https://source.unsplash.com/user/erondu/1265x465"
+}
 ###
 PUT http://localhost:8080/post/2
 Content-Type: application/json

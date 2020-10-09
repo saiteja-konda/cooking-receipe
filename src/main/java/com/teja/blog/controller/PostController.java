@@ -26,7 +26,7 @@ import javax.validation.Valid;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-@CrossOrigin({"http://localhost:3000", "https://saiteja-blog.herokuapp.com"})
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/")
 public class PostController {
@@ -151,6 +151,7 @@ public class PostController {
             post.setContent(oldPost.getContent());
             post.setCategoryId(oldPost.getCategoryId());
             post.setTags(oldPost.getTags());
+            post.setImageUrl(oldPost.getImageUrl());
 
             // set genre with reference to categoryId
             Optional<Category> opt = categoryRepository.findById(oldPost.getCategoryId());

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RequestMapping("/")
 @RestController
 public class ReplyController {
@@ -20,7 +21,6 @@ public class ReplyController {
     public CommentRepository commentRepository;
 
     @PostMapping("reply/{id}")
-    @OperationLog("New Reply to comment")
     public Reply addReply(@RequestBody Reply reply, @PathVariable Long id) {
 
         Comment c = commentRepository.findById(id).orElse(null);
@@ -34,6 +34,7 @@ public class ReplyController {
 
             return replyRepository.save(reply);
         }).orElseThrow(null);
+        //TODO pretsisting twice fix this bug
     }
 
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin({"http://localhost:3000", "https://saiteja-blog.herokuapp.com"})
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/")
 public class CommentsController {
@@ -41,7 +41,7 @@ public class CommentsController {
             model.put("Title", post.getTitle());
             model.put("Name", comment.getCommentor());
             model.put("Comment", comment.getComment());
-            commentService.commentNotifcation(post.getTitle(), model);
+//            commentService.commentNotifcation(post.getTitle(), model);
 
             return commentRepository.save(comment);
         }).orElseThrow(null);

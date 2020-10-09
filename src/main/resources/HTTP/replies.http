@@ -1,10 +1,10 @@
 ###
-POST http://localhost:8080/reply/3
+POST http://localhost:8080/reply/79
 Content-Type: application/json
 
 {
-    "reply": "My first reply",
-    "repliedBy": "Deno JS"
+    "reply": "Yes i just wateched couple of season, its awesome, i cant wait to watch season 3",
+    "repliedBy": "Deno"
 }
 
 ###

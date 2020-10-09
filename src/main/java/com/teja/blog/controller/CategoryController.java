@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-@CrossOrigin({"http://localhost:3000", "https://saiteja-blog.herokuapp.com"})
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/")
 public class CategoryController {

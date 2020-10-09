@@ -1,9 +1,9 @@
 ##
-POST http://localhost:8080/comment/1
+POST http://localhost:8080/comment/2
 Content-Type: application/json
 
 {
-"comment":"This is really amazing, i can't believe its true",
+"comment":"This Show is really amazing, Mind blowing thriller and best amoung series on Netflix",
 "commentor":"Saiteja Konda"
 }
 

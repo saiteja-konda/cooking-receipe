@@ -41,6 +41,9 @@ public class Post  implements Serializable {
     private String genre;
     private int views;
     private int likes;
+    private String imageUrl;
+    // TODO rename this as bannerImageUrl
+    private String thumbnailImageUrl;
 
     @OneToMany(
             mappedBy = "post",
