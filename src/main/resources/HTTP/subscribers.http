@@ -3,7 +3,7 @@ POST http://localhost:8080/subscribers
 Content-Type: application/json
 
 {
-    "name": "Saiteefgjbja",
+    "name": "saiteja",
     "email": "saitejmac@icloud.com"
 }
 
