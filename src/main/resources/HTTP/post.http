@@ -2,21 +2,23 @@
 //CREATE
 ###
 POST http://localhost:8080/post
+#POST https://athenanetworks.herokuapp.com/post
 Content-Type: application/json
 
 {
-    "title": "Action Thriller John Wick 4",
+    "title": "Dillon Francis new remix for Zhu - Follow you",
     "content": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
     "description": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
     "categoryId": "1",
-    "imageUrl": "https://source.unsplash.com/user/erondu/1600x900",
+    "imageUrl": "https://source.unsplash.com/user/erondu/1265x465",
+    "thumbnailImageUrl": "https://picsum.photos/825/500",
     "type": "Latest",
     "tags": [
         {
-            "name": "Netflix"
+            "name": "Music"
         },
         {
-            "name": "Thirller"
+            "name": "News"
         }
     ]
 }
@@ -27,7 +29,9 @@ Content-Type: application/json
 GET http://localhost:8080/post
 
 ###
-GET http://localhost:8080/post/24
+GET https://athenanetworks.herokuapp.com/post
+###
+GET http://localhost:8080/post/27
 
 ###
 GET http://localhost:8080/post/count
@@ -39,7 +43,7 @@ GET http://localhost:8080/post/genres/News
 GET http://localhost:8080/post/type/Trending
 
 ###
-GET http://localhost:8080/like/2
+GET http://localhost:8080/like/27
 
 ###
 GET http://localhost:8080/post/comments/count/8
@@ -58,7 +62,9 @@ GET http://localhost:8080/post/search/muder
 ###
 //1265 × 464
 ###
-PUT  http://localhost:8080/post/24
+#PUT  http://localhost:8080/post/1
+###
+PUT https://athenanetworks.herokuapp.com/post/2
 Content-Type: application/json
 
 {
@@ -86,4 +92,4 @@ Content-Type: application/json
 ###
 //DELETE
 ###
-DELETE http://localhost:8080/post/1
+DELETE http://localhost:8080/post/22

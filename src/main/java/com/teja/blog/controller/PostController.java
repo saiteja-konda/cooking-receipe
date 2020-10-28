@@ -15,7 +15,6 @@ import com.teja.blog.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -26,7 +25,7 @@ import javax.validation.Valid;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", exposedHeaders = "X-Total-Count")
 @RestController
 @RequestMapping("/")
 public class PostController {
@@ -44,6 +43,7 @@ public class PostController {
     @GetMapping("post")
     @VisitLog
     public List<Post> getAllPosts() {
+
         return postRepository.findAll();
     }
 

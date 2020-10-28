@@ -3,8 +3,18 @@ POST http://localhost:8080/category
 Content-Type: application/json
 
 {
+    "name": "Horror"
+}
+###
+
+POST https://athenanetworks.herokuapp.com/category
+Content-Type: application/json
+
+{
     "name": "Tv Series"
 }
+
+
 
 ###
 GET http://localhost:8080/category

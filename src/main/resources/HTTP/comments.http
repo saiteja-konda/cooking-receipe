@@ -1,5 +1,5 @@
 ##
-POST http://localhost:8080/comment/2
+POST http://localhost:8080/comment/28
 Content-Type: application/json
 
 {
