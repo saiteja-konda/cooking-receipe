@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", exposedHeaders = "X-Total-Count")
 public class SubscriberController {
     @Autowired
     public SubscriberRepository subscriberRepository;
@@ -38,13 +38,4 @@ public class SubscriberController {
         subcribersList.forEach(s -> System.out.println(s.getEmail()));
         return subscriberRepository.findAll();
     }
-
-//    @GetMapping("/test")
-//    public String sendBroadcast() {
-//        Map<String, Object> model = new HashMap<>();
-//        model.put("Name", "name here");
-//        model.put("location", "Bangalore,India");
-//        subscribersService.broadcast(model);
-//        return "";
-//    }
 }

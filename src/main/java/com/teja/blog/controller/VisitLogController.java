@@ -3,6 +3,7 @@ package com.teja.blog.controller;
 import com.teja.blog.Annotation.OperationLog;
 import com.teja.blog.Service.Impletementations.VisitLogService;
 import com.teja.blog.model.VisitLog;
+import com.teja.blog.repository.VisitLogRepository;
 import com.teja.blog.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,14 +11,22 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", exposedHeaders = "X-Total-Count")
 @RestController
-@RequestMapping("/admin/visitLog")
+@RequestMapping("/")
 public class VisitLogController {
 
     @Autowired
     private VisitLogService visitLogService;
+    @Autowired
+    private VisitLogRepository logRepository;
+
+    @GetMapping("visitLog")
+    public List<VisitLog> getVisitLogs() {
+        return logRepository.findAll();
+    }
 
     @GetMapping({"/{pageSize}/{page}"})
     public Result listVisitLog(@PathVariable Integer pageSize,
@@ -45,7 +54,7 @@ public class VisitLogController {
         return new Result(visitLogs);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("visitLog/{id}")
     @OperationLog("Delete visit log")
     public Result deleteVisitLog(@PathVariable Long id) {
         this.visitLogService.deleteVisitLog(id);

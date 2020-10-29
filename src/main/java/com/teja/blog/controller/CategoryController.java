@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", exposedHeaders = "X-Total-Count")
 @RestController
 @RequestMapping("/")
 public class CategoryController {

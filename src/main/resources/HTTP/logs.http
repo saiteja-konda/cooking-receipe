@@ -1,0 +1,3 @@
+GET http://localhost:8080/logs
+###
+GET http://localhost:8080/dashboard

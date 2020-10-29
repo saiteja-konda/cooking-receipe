@@ -31,7 +31,7 @@ GET http://localhost:8080/post
 ###
 GET https://athenanetworks.herokuapp.com/post
 ###
-GET http://localhost:8080/post/27
+GET http://localhost:8080/post/31
 
 ###
 GET http://localhost:8080/post/count
