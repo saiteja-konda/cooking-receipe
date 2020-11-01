@@ -23,7 +23,7 @@ public class VisitLogController {
     @Autowired
     private VisitLogRepository logRepository;
 
-    @GetMapping("visitLog")
+    @GetMapping("admin/visitLog")
     public List<VisitLog> getVisitLogs() {
         return logRepository.findAll();
     }
@@ -54,7 +54,7 @@ public class VisitLogController {
         return new Result(visitLogs);
     }
 
-    @DeleteMapping("visitLog/{id}")
+    @DeleteMapping("admin/visitLog/{id}")
     @OperationLog("Delete visit log")
     public Result deleteVisitLog(@PathVariable Long id) {
         this.visitLogService.deleteVisitLog(id);

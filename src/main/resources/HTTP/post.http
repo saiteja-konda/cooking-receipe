@@ -1,7 +1,7 @@
 
 //CREATE
 ###
-POST http://localhost:8080/post
+POST http://localhost:8080/admin/post
 #POST https://athenanetworks.herokuapp.com/post
 Content-Type: application/json
 
@@ -31,7 +31,7 @@ GET http://localhost:8080/post
 ###
 GET https://athenanetworks.herokuapp.com/post
 ###
-GET http://localhost:8080/post/31
+GET http://localhost:8080/admin/post/14
 
 ###
 GET http://localhost:8080/post/count
@@ -62,16 +62,16 @@ GET http://localhost:8080/post/search/muder
 ###
 //1265 × 464
 ###
-#PUT  http://localhost:8080/post/1
 ###
-PUT https://athenanetworks.herokuapp.com/post/2
+#PUT https://athenanetworks.herokuapp.com/post/2
+PUT  http://localhost:8080/admin/post/14
 Content-Type: application/json
 
 {
     "imageUrl": "https://source.unsplash.com/user/erondu/1265x465"
 }
 ###
-PUT http://localhost:8080/post/2
+PUT http://localhost:8080/admin/post/14
 Content-Type: application/json
 
 {
@@ -79,6 +79,9 @@ Content-Type: application/json
     "content": "saitejakda@gmail.com",
     "description": "abcde",
     "categoryId": "1",
+    "imageUrl": "https://source.unsplash.com/user/erondu/1265x465",
+    "thumbnailImageUrl": "https://picsum.photos/825/500",
+    "type": "Featured",
     "tags": [
         {
             "name": "Alpha"

@@ -46,7 +46,7 @@ public class DashBoardController {
         }
     }
 
-    @GetMapping("dashboard")
+    @GetMapping("admin/dashboard")
     public Stats myMethod() {
         Stats stats = new Stats(postRepository.count(), subscriberRepository.count());
         return stats;

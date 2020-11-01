@@ -40,14 +40,14 @@ public class PostController {
     private PostSerivceImpl postSerivce;
 
     //Public Routes GET
-    @GetMapping("post")
+    @GetMapping({"admin/post", "post"})
     @VisitLog
     public List<Post> getAllPosts() {
 
         return postRepository.findAll();
     }
 
-    @GetMapping("post/{id}")
+    @GetMapping({"admin/post/{id}", "post/{id}"})
     @VisitLog
     public ResponseEntity<?> getPostbyId(@PathVariable Long id) {
 
@@ -115,8 +115,9 @@ public class PostController {
         System.out.println(keyword);
         return new Result(this.postSerivce.searchPost(keyword));
     }
+
     //Private Routes  CREATE UPDATE DELETE
-    @PostMapping("post")
+    @PostMapping("admin/post")
     @OperationLog("Added a new post")
     public ResponseEntity<?> createPost(@Valid @RequestBody Post post, BindingResult result) {
         try {
@@ -141,7 +142,7 @@ public class PostController {
     }
 
 
-    @PutMapping("post/{id}")
+    @PutMapping("admin/post/{id}")
     @OperationLog("updated post")
     public ResponseEntity<?> updatePost(@Valid @RequestBody Post oldPost, @PathVariable Long id) throws FileNotFoundException {
         try {
@@ -152,7 +153,8 @@ public class PostController {
             post.setCategoryId(oldPost.getCategoryId());
             post.setTags(oldPost.getTags());
             post.setImageUrl(oldPost.getImageUrl());
-
+            post.setThumbnailImageUrl(oldPost.getThumbnailImageUrl());
+            post.setType(oldPost.getType());
             // set genre with reference to categoryId
             Optional<Category> opt = categoryRepository.findById(oldPost.getCategoryId());
             oldPost.setGenre(opt.get().getName());
@@ -166,7 +168,7 @@ public class PostController {
 
     }
 
-    @DeleteMapping("post/{id}")
+    @DeleteMapping("admin/post/{id}")
     @OperationLog("Deleted post")
     public ResponseEntity<?> deletePost(@PathVariable Long id) {
 

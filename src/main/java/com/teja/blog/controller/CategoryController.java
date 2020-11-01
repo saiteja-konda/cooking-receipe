@@ -20,7 +20,7 @@ public class CategoryController {
     private CategoryRepository categoryRepository;
 
 
-    @PostMapping("category")
+    @PostMapping("admin/category")
     public ResponseEntity<Category> createCatefory(@Valid @RequestBody Category category) throws Exception {
         try {
             categoryRepository.save(category);
@@ -38,7 +38,7 @@ public class CategoryController {
 
     }
 
-    @PutMapping("category/{id}")
+    @PutMapping("admin/category/{id}")
     public ResponseEntity<?> updateCategory( @RequestBody Category oldCategory,@PathVariable Long id ) throws FileNotFoundException {
         try {
             Category category = categoryRepository.findById(id).orElseThrow(FileNotFoundException::new);
@@ -52,7 +52,7 @@ public class CategoryController {
 
     }
 
-    @DeleteMapping("category/{id}")
+    @DeleteMapping("admin/category/{id}")
     public ResponseEntity<?> deleteCategory(@PathVariable Long id) {
         try {
             categoryRepository.deleteById(id);

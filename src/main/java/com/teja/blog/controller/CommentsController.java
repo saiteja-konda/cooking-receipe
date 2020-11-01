@@ -67,7 +67,7 @@ public class CommentsController {
 
     //Only Admin can perform this Request
 
-    @DeleteMapping("comment/{id}")
+    @DeleteMapping("admin/comment/{id}")
     public ResponseEntity<?> deleteComment(@PathVariable Long id){
         commentRepository.deleteById(id);
         return new ResponseEntity(" Comment Deleted successfully with the Id " + id, HttpStatus.ACCEPTED);

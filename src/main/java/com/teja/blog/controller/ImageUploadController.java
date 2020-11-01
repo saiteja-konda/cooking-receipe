@@ -18,6 +18,8 @@ public class ImageUploadController {
     @Value("${web.upload-path}")
     private String saveDir;
 
+
+
     @PostMapping("/upload/{type}")
     @OperationLog("New image uploaded")
     public Result uploadImg(@RequestParam(value = "file") MultipartFile file,
@@ -42,6 +44,7 @@ public class ImageUploadController {
                 "Please upload images of jpg, png and gif format!");
         }
     }
+
 
     @DeleteMapping("/admin/delete")
     @OperationLog("image Deleted")

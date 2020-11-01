@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/")
 @CrossOrigin(origins = "*", exposedHeaders = "X-Total-Count")
 public class SubscriberController {
     @Autowired
@@ -21,7 +22,7 @@ public class SubscriberController {
     @Autowired
     public SubscribersServiceImpl subscribersService;
 
-    @PostMapping("/subscribers")
+    @PostMapping("subscribers")
     @OperationLog("Added new Subscriber")
     public ResponseEntity<?> crateSubscriber(@RequestBody Subcribers subcribers) {
         subscriberRepository.save(subcribers);
@@ -32,7 +33,7 @@ public class SubscriberController {
         return new ResponseEntity<Subcribers>(subcribers, HttpStatus.CREATED);
     }
 
-    @GetMapping("/subscribers")
+    @GetMapping("admin/subscribers")
     public List<Subcribers> getSubscriber() {
         List<Subcribers> subcribersList = subscriberRepository.findAll();
         subcribersList.forEach(s -> System.out.println(s.getEmail()));

@@ -59,7 +59,7 @@ public class ReplyController {
 
     //Only Admin can perform this Request
 
-    @DeleteMapping("reply/{id}")
+    @DeleteMapping("admin/reply/{id}")
     public ResponseEntity<?> deleteReply(@PathVariable Long id) {
         replyRepository.deleteById(id);
         return new ResponseEntity(" Reply Deleted successfully with the Id " + id, HttpStatus.ACCEPTED);
