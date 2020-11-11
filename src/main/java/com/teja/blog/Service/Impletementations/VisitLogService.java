@@ -31,7 +31,7 @@ public class VisitLogService implements VisitLogAspect {
     public void addVisitLog(String ip) {
 
         String location = null;
-
+        String city;
         List<VisitLog> visitLogs = this.visitLogRepository.findByIp(ip);
 
         VisitLog visitLog = null;
@@ -49,6 +49,7 @@ public class VisitLogService implements VisitLogAspect {
                 System.err.println(e.getMessage());
             }
             visitLog.setLocation(location);
+
         }
         this.visitLogRepository.save(visitLog);
     }

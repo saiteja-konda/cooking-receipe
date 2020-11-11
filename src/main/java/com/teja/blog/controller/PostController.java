@@ -3,6 +3,7 @@ package com.teja.blog.controller;
 import com.teja.blog.Annotation.OperationLog;
 import com.teja.blog.Annotation.VisitLog;
 import com.teja.blog.Query.Postpage;
+import com.teja.blog.Exception.ResourceNotFoundException;
 import com.teja.blog.Service.Impletementations.PostSerivceImpl;
 import com.teja.blog.Service.Services.PostService;
 import com.teja.blog.model.Category;
@@ -12,9 +13,8 @@ import com.teja.blog.repository.CommentRepository;
 import com.teja.blog.repository.PostRepository;
 
 import com.teja.blog.utils.Result;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -47,15 +47,13 @@ public class PostController {
         return postRepository.findAll();
     }
 
+
     @GetMapping({"admin/post/{id}", "post/{id}"})
     @VisitLog
     public ResponseEntity<?> getPostbyId(@PathVariable Long id) {
 
         try {
-            Post post = postRepository.findById(id).orElse(null);
-            post.setViews(post.getViews() + 1);
-            postRepository.save(post);
-
+            postSerivce.getPostById(id);
             return new ResponseEntity(postRepository.findById(id).orElseThrow(Exception::new), HttpStatus.ACCEPTED);
 
         } catch (Exception e) {
@@ -68,6 +66,27 @@ public class PostController {
     public Long getPostCount() {
 
         return postRepository.count();
+
+    }
+
+    @GetMapping("post/order/views")
+    public List<Post> getPostorderByViews() {
+
+        return postRepository.findTop6ByOrderByViewsDesc();
+
+    }
+
+    @GetMapping("post/order/likes")
+    public List<Post> getPostorderByLike() {
+
+        return postRepository.findTop6ByOrderByLikesDesc();
+
+    }
+
+    @GetMapping("post/order/comments")
+    public List<Post> getPostorderByComments() {
+
+        return postRepository.findTop6ByOrderByTotalCommentsDesc();
 
     }
 
@@ -99,11 +118,12 @@ public class PostController {
         return post.getLikes();
     }
 
-    @GetMapping("posts/type/{type}")
-    public Page<Post> getTypedPost(@PathVariable String type) {
-        Postpage pg = new Postpage();
-        return postRepository.findAllByType(type, PageRequest.of(pg.getPageNumber(), pg.getPageSize(), pg.getDirection(), pg.getSortBy()));
-    }
+//    @GetMapping("posts")
+//    public Page<Post> getTypedPost(@PathVariable String type) {
+//        Postpage pg = new Postpage();
+////        return postRepository.findAllByType(type, PageRequest.of(pg.getDirection(),pg.getSortBy()));
+//        return postRepository.findAllByType(type, PageRequest.of(pg.getPageNumber(), pg.getPageSize(), pg.getDirection(), pg.getSortBy()));
+//    }
 
     @GetMapping("post/tags/{name}")
     public Set<Post> getPostsByTags(@PathVariable String name) {
@@ -170,7 +190,7 @@ public class PostController {
 
     @DeleteMapping("admin/post/{id}")
     @OperationLog("Deleted post")
-    public ResponseEntity<?> deletePost(@PathVariable Long id) {
+    public ResponseEntity<?> deletePost(@PathVariable Long id) throws ResourceNotFoundException {
 
         try {
             postRepository.deleteById(id);
@@ -178,6 +198,7 @@ public class PostController {
 
         } catch (Exception e) {
             e.printStackTrace();
+            e.getMessage();
         }
         return new ResponseEntity("No Post found with the Id " + id, HttpStatus.BAD_REQUEST);
     }

@@ -4,8 +4,10 @@ import com.teja.blog.Service.Services.PostService;
 import com.teja.blog.model.Post;
 import com.teja.blog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -16,9 +18,25 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Service
+
+
 public class PostSerivceImpl implements PostService {
     @Autowired
     public PostRepository postRepository;
+
+
+    @Override
+    @Cacheable("post")
+    public Post getPostById(Long id) {
+        return getPostSlow(id);
+    }
+
+    private Post getPostSlow(Long id) {
+        Post post = postRepository.findById(id).orElse(null);
+        post.setViews(post.getViews() + 1);
+        return postRepository.save(post);
+    }
+
 
     @Override
     public List<Post> searchPost(String keyword) {

@@ -13,16 +13,23 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-@Repository
-public interface PostRepository extends JpaRepository<Post,Long>, JpaSpecificationExecutor<Post> {
-   List<Post> findAllByGenre(String genre);
-   List<Post> findPostsByTypeOrderByPostedOnAsc(String type);
 
-   Page<Post> findAllByType(String type, Pageable pageable);
+@Repository
+public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificationExecutor<Post> {
+    List<Post> findAllByGenre(String genre);
+
+    List<Post> findPostsByTypeOrderByPostedOnAsc(String type);
+
+    Page<Post> findAllByType(String type, Pageable pageable);
 
     @Transactional(readOnly = true)
     Set<Post> findByTagsName(String name);
 
+    List<Post> findTop6ByOrderByViewsDesc();
+
+    List<Post> findTop6ByOrderByTotalCommentsDesc();
+
+    List<Post> findTop6ByOrderByLikesDesc();
 }
 /*
 //TODO

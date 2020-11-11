@@ -1,5 +1,5 @@
 ##
-POST http://localhost:8080/comment/28
+POST http://localhost:8080/comment/55
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/comment+/2
+DELETE http://teluguphantom.ap-south-1.elasticbeanstalk.com/admin/comment/2
 
 ###
 GET http://localhost:8080/comment-/2

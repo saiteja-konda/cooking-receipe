@@ -1,14 +1,34 @@
 
 //CREATE
+GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/genres/count/Entertainment
 ###
-POST http://localhost:8080/admin/post
-#POST https://athenanetworks.herokuapp.com/post
+GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/genres/count/Music
+###
+GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/genres/count/Health
+###
+GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/genres/count/Technology
+###
+GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/genres/count/Events
+###
+GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/order
+###
+POST   http://teluguphantom.ap-south-1.elasticbeanstalk.com/admin/category
 Content-Type: application/json
 
 {
-    "title": "Dillon Francis new remix for Zhu - Follow you",
-    "content": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
-    "description": "Labore amet doloribus ex eos sequi asperiores dolor blanditiis omnis est quia amet iusto facere.",
+    "name": "Technology"
+}
+###
+GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/
+
+###
+POST http://teluguphantom.ap-south-1.elasticbeanstalk.com/admin/post
+Content-Type: application/json
+
+{
+    "title": "Lollapalooza co-founder fights to keep independent music venues alive by acquiring them",
+    "content": "abc",
+    "description": "Lollapalooza co-founder Marc Gieger unveiled a new plan in an attempt to save independent music venues from closing their doors forever.",
     "categoryId": "1",
     "imageUrl": "https://source.unsplash.com/user/erondu/1265x465",
     "thumbnailImageUrl": "https://picsum.photos/825/500",
@@ -26,7 +46,10 @@ Content-Type: application/json
 ###
 //READ
 ###
-GET http://localhost:8080/post
+GET http://localhost:8080/post/37
+
+###
+GET http://localhost:8080/admin/post/
 
 ###
 GET https://athenanetworks.herokuapp.com/post
@@ -34,7 +57,13 @@ GET https://athenanetworks.herokuapp.com/post
 GET http://localhost:8080/admin/post/14
 
 ###
-GET http://localhost:8080/post/count
+GET http://localhost:8080/post/order/likes
+
+###
+GET http://localhost:8080/post/order/views
+
+###
+GET http://localhost:8080/post/order/comments
 
 ###
 GET http://localhost:8080/post/genres/News
@@ -71,7 +100,7 @@ Content-Type: application/json
     "imageUrl": "https://source.unsplash.com/user/erondu/1265x465"
 }
 ###
-PUT http://localhost:8080/admin/post/14
+POST http://teluguphantom.ap-south-1.elasticbeanstalk.com/admin/post
 Content-Type: application/json
 
 {
@@ -81,6 +110,129 @@ Content-Type: application/json
     "categoryId": "1",
     "imageUrl": "https://source.unsplash.com/user/erondu/1265x465",
     "thumbnailImageUrl": "https://picsum.photos/825/500",
+    "comments":[
+                                {
+                                  "commentor": "Goyette Athena",
+                                  "commentedOn": "2020-03-12",
+                                  "totalReplies": 3,
+                                  "comment":
+                                    "Try to parse the COM alarm, maybe it will bypass the redundant matrix!",
+                                  "votes": 12,
+                                  "replies": [
+                                    {
+                                      "reply":
+                                        "Try to connect the JSON driver, maybe it will program the multi-byte card!",
+                                      "repliedBy": "Quigley Taya",
+                                      "repliedOn": "2020-05-19",
+                                      "votes": 12
+                                    },
+                                    {
+                                      "reply":
+                                        "compressing the card won't do anything, we need to generate the primary PCI feed!",
+                                      "repliedBy": "Robel Josie",
+                                      "repliedOn": "2020-08-06",
+                                      "votes": 12
+                                    }
+                                  ]
+                                },
+                                {
+                                  "commentor": "Boyle Raphael",
+                                  "commentedOn": "2020-10-02",
+                                  "totalReplies": 4,
+                                  "comment":
+                                    "I'll bypass the primary HDD alarm, that should array the TCP driver!",
+                                  "votes": 26,
+                                  "replies": [
+                                    {
+                                      "reply":
+                                        "Try to connect the JSON driver, maybe it will program the multi-byte card!",
+                                      "repliedBy": "Quigley Taya",
+                                      "repliedOn": "2020-05-19",
+                                      "votes": 12
+                                    },
+                                    {
+                                      "reply":
+                                        "compressing the card won't do anything, we need to generate the primary PCI feed!",
+                                      "repliedBy": "Robel Josie",
+                                      "repliedOn": "2020-08-06",
+                                      "votes": 12
+                                    }
+                                  ]
+                                },
+                                {
+                                  "commentor": "Waters Meredith",
+                                  "commentedOn": "2020-05-18",
+                                  "totalReplies": 2,
+                                  "comment":
+                                    "programming the firewall won't do anything, we need to program the redundant PCI protocol!",
+                                  "votes": 23,
+                                  "replies": [
+                                    {
+                                      "reply":
+                                        "Try to connect the JSON driver, maybe it will program the multi-byte card!",
+                                      "repliedBy": "Quigley Taya",
+                                      "repliedOn": "2020-05-19",
+                                      "votes": 12
+                                    },
+                                    {
+                                      "reply":
+                                        "compressing the card won't do anything, we need to generate the primary PCI feed!",
+                                      "repliedBy": "Robel Josie",
+                                      "repliedOn": "2020-08-06",
+                                      "votes": 12
+                                    }
+                                  ]
+                                },
+                                {
+                                  "commentor": "Casper Valentina",
+                                  "commentedOn": "2020-07-04",
+                                  "totalReplies": 2,
+                                  "comment": "We need to bypass the multi-byte ADP circuit!",
+                                  "votes": 14,
+                                  "replies": [
+                                    {
+                                      "reply":
+                                        "Try to connect the JSON driver, maybe it will program the multi-byte card!",
+                                      "repliedBy": "Quigley Taya",
+                                      "repliedOn": "2020-05-19",
+                                      "votes": 12
+                                    },
+                                    {
+                                      "reply":
+                                        "compressing the card won't do anything, we need to generate the primary PCI feed!",
+                                      "repliedBy": "Robel Josie",
+                                      "repliedOn": "2020-08-06",
+                                      "votes": 12
+                                    }
+                                  ]
+                                },
+                                {
+                                  "commentor": "Fisher Dorris",
+                                  "commentedOn": "2020-08-08",
+                                  "totalReplies": 6,
+                                  "comment":
+                                    "The PCI microchip is down, override the back-end pixel so we can compress the SAS monitor!",
+                                  "votes": 29,
+                                  "replies": [
+                                    {
+                                      "reply":
+                                        "Try to connect the JSON driver, maybe it will program the multi-byte card!",
+                                      "repliedBy": "Quigley Taya",
+                                      "repliedOn": "2020-05-19",
+                                      "votes": 12
+                                    },
+                                    {
+                                      "reply":
+                                        "compressing the card won't do anything, we need to generate the primary PCI feed!",
+                                      "repliedBy": "Robel Josie",
+                                      "repliedOn": "2020-08-06",
+                                      "votes": 12
+                                    }
+                                  ]
+                                }
+
+                              ],
+
     "type": "Featured",
     "tags": [
         {
@@ -95,4 +247,9 @@ Content-Type: application/json
 ###
 //DELETE
 ###
-DELETE http://localhost:8080/post/22
+DELETE http://localhost:8080/admin/post/22
+
+###
+###
+
+DELETE  http://tpham-env.eba-wisjhsru.ap-south-1.elasticbeanstalk.com//admin/post/34

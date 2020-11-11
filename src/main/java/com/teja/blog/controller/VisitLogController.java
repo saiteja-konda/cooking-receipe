@@ -28,7 +28,7 @@ public class VisitLogController {
         return logRepository.findAll();
     }
 
-    @GetMapping({"/{pageSize}/{page}"})
+    @GetMapping({"admin/visitlog/{pageSize}/{page}"})
     public Result listVisitLog(@PathVariable Integer pageSize,
                                @PathVariable(required = false) Integer page,
                                @RequestParam(required = false) Integer startYear,

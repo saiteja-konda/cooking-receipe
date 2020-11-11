@@ -10,7 +10,7 @@ Content-Type: application/json
 ###
 
 ###
-GET http://localhost:8080/subscribers
+GET http://localhost:8080/admin/subscribers
 
 ###
 ###
