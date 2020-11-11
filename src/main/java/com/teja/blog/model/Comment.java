@@ -57,4 +57,68 @@ public class Comment {
     public void setPost(Post post) {
         this.post = post;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getCommentor() {
+        return commentor;
+    }
+
+    public void setCommentor(String commentor) {
+        this.commentor = commentor;
+    }
+
+    public String getSkey() {
+        return skey;
+    }
+
+    public void setSkey(String skey) {
+        this.skey = skey;
+    }
+
+    public int getTotalReplies() {
+        return totalReplies;
+    }
+
+    public void setTotalReplies(int totalReplies) {
+        this.totalReplies = totalReplies;
+    }
+
+    public Date getCommentedOn() {
+        return commentedOn;
+    }
+
+    public void setCommentedOn(Date commentedOn) {
+        this.commentedOn = commentedOn;
+    }
+
+    public int getVotes() {
+        return votes;
+    }
+
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
+
+    public List<Reply> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(List<Reply> replies) {
+        this.replies = replies;
+    }
 }

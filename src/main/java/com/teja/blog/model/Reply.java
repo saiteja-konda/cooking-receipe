@@ -38,6 +38,46 @@ public class Reply {
         return comment;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getReply() {
+        return reply;
+    }
+
+    public void setReply(String reply) {
+        this.reply = reply;
+    }
+
+    public String getRepliedBy() {
+        return repliedBy;
+    }
+
+    public void setRepliedBy(String repliedBy) {
+        this.repliedBy = repliedBy;
+    }
+
+    public Date getRepliedOn() {
+        return repliedOn;
+    }
+
+    public void setRepliedOn(Date repliedOn) {
+        this.repliedOn = repliedOn;
+    }
+
+    public int getVotes() {
+        return votes;
+    }
+
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
+
     public void setComment(Comment comment) {
         this.comment = comment;
     }
