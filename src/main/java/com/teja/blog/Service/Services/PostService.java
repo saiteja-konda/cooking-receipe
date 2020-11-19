@@ -9,4 +9,5 @@ public interface PostService {
     List<Post> searchPost(String keyword);
 
     Post getPostById(Long id);
+    Post fetchPostById(Long id);
 }

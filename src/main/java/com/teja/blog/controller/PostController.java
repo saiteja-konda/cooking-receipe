@@ -53,8 +53,10 @@ public class PostController {
     public ResponseEntity<?> getPostbyId(@PathVariable Long id) {
 
         try {
-            postSerivce.getPostById(id);
-            return new ResponseEntity(postRepository.findById(id).orElseThrow(Exception::new), HttpStatus.ACCEPTED);
+            Post post = postSerivce.getPostById(id);
+            post.setViews(post.getViews() + 1);
+            postRepository.save(post);
+            return new ResponseEntity(post, HttpStatus.ACCEPTED);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,18 +114,51 @@ public class PostController {
 
     @GetMapping("like/{id}")
     public int like(@PathVariable Long id) {
-        Post post = postRepository.findById(id).orElseThrow(null);
+        Post post = postSerivce.getPostById(id);
         post.setLikes(post.getLikes() + 1);
         postRepository.save(post);
         return post.getLikes();
     }
 
-//    @GetMapping("posts")
-//    public Page<Post> getTypedPost(@PathVariable String type) {
-//        Postpage pg = new Postpage();
-////        return postRepository.findAllByType(type, PageRequest.of(pg.getDirection(),pg.getSortBy()));
-//        return postRepository.findAllByType(type, PageRequest.of(pg.getPageNumber(), pg.getPageSize(), pg.getDirection(), pg.getSortBy()));
-//    }
+    @GetMapping("wow/{id}")
+    public int wow(@PathVariable Long id) {
+        Post post = postSerivce.getPostById(id);
+        post.setWow(post.getWow() + 1);
+        postRepository.save(post);
+        return post.getWow();
+    }
+
+    @GetMapping("laugh/{id}")
+    public int laugh(@PathVariable Long id) {
+        Post post = postSerivce.getPostById(id);
+        post.setLaugh(post.getLaugh() + 1);
+        postRepository.save(post);
+        return post.getLaugh();
+    }
+
+    @GetMapping("angery/{id}")
+    public int angery(@PathVariable Long id) {
+        Post post = postSerivce.getPostById(id);
+        post.setAngery(post.getAngery() + 1);
+        postRepository.save(post);
+        return post.getAngery();
+    }
+
+    @GetMapping("sad/{id}")
+    public int sad(@PathVariable Long id) {
+        Post post = postSerivce.getPostById(id);
+        post.setSad(post.getSad() + 1);
+        postRepository.save(post);
+        return post.getSad();
+    }
+
+    @GetMapping("superb/{id}")
+    public int superb(@PathVariable Long id) {
+        Post post = postSerivce.getPostById(id);
+        post.setSuperb(post.getSuperb() + 1);
+        postRepository.save(post);
+        return post.getSuperb();
+    }
 
     @GetMapping("post/tags/{name}")
     public Set<Post> getPostsByTags(@PathVariable String name) {
@@ -175,7 +210,6 @@ public class PostController {
             post.setImageUrl(oldPost.getImageUrl());
             post.setThumbnailImageUrl(oldPost.getThumbnailImageUrl());
             post.setType(oldPost.getType());
-            // set genre with reference to categoryId
             Optional<Category> opt = categoryRepository.findById(oldPost.getCategoryId());
             oldPost.setGenre(opt.get().getName());
             postRepository.save(post);

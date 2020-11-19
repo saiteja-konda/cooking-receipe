@@ -46,7 +46,7 @@ Content-Type: application/json
 ###
 //READ
 ###
-GET http://localhost:8080/post/37
+GET http://localhost:5000/post/25
 
 ###
 GET http://localhost:8080/admin/post/

@@ -1,24 +1,36 @@
 {
   "files": {
-    "main.css": "/static/css/main.be1f1fbd.chunk.css",
-    "main.js": "/static/js/main.da2c7b22.chunk.js",
-    "main.js.map": "/static/js/main.da2c7b22.chunk.js.map",
+    "main.css": "/static/css/main.e2b93c30.chunk.css",
+    "main.js": "/static/js/main.56d047aa.chunk.js",
+    "main.js.map": "/static/js/main.56d047aa.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.83b90626.js",
     "runtime-main.js.map": "/static/js/runtime-main.83b90626.js.map",
     "static/css/2.a3f6a0d2.chunk.css": "/static/css/2.a3f6a0d2.chunk.css",
-    "static/js/2.b46e5b9f.chunk.js": "/static/js/2.b46e5b9f.chunk.js",
-    "static/js/2.b46e5b9f.chunk.js.map": "/static/js/2.b46e5b9f.chunk.js.map",
+    "static/js/2.d8f99d82.chunk.js": "/static/js/2.d8f99d82.chunk.js",
+    "static/js/2.d8f99d82.chunk.js.map": "/static/js/2.d8f99d82.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.a3f6a0d2.chunk.css.map": "/static/css/2.a3f6a0d2.chunk.css.map",
-    "static/css/main.be1f1fbd.chunk.css.map": "/static/css/main.be1f1fbd.chunk.css.map",
-    "static/js/2.b46e5b9f.chunk.js.LICENSE.txt": "/static/js/2.b46e5b9f.chunk.js.LICENSE.txt",
-    "static/media/404.cb8d5bcd.png": "/static/media/404.cb8d5bcd.png"
+    "static/css/main.e2b93c30.chunk.css.map": "/static/css/main.e2b93c30.chunk.css.map",
+    "static/js/2.d8f99d82.chunk.js.LICENSE.txt": "/static/js/2.d8f99d82.chunk.js.LICENSE.txt",
+    "static/media/404.cb8d5bcd.png": "/static/media/404.cb8d5bcd.png",
+    "static/media/Anger.f8975184.svg": "/static/media/Anger.f8975184.svg",
+    "static/media/base.scss": "/static/media/Objective-Light.349e4380.woff2",
+    "static/media/Laugh.f284a8c4.svg": "/static/media/Laugh.f284a8c4.svg",
+    "static/media/boy-brown-curly.47dabea1.png": "/static/media/boy-brown-curly.47dabea1.png",
+    "static/media/default.b8f93d91.png": "/static/media/default.b8f93d91.png",
+    "static/media/fire.6909da51.svg": "/static/media/fire.6909da51.svg",
+    "static/media/girl-white-green.73f51cd5.png": "/static/media/girl-white-green.73f51cd5.png",
+    "static/media/girl-white-red-long-hair.1c653bef.png": "/static/media/girl-white-red-long-hair.1c653bef.png",
+    "static/media/logo53.3483401e.png": "/static/media/logo53.3483401e.png",
+    "static/media/love.94576bd5.svg": "/static/media/love.94576bd5.svg",
+    "static/media/sad.fbad9312.svg": "/static/media/sad.fbad9312.svg",
+    "static/media/wow.7c59419d.svg": "/static/media/wow.7c59419d.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.83b90626.js",
     "static/css/2.a3f6a0d2.chunk.css",
-    "static/js/2.b46e5b9f.chunk.js",
-    "static/css/main.be1f1fbd.chunk.css",
-    "static/js/main.da2c7b22.chunk.js"
+    "static/js/2.d8f99d82.chunk.js",
+    "static/css/main.e2b93c30.chunk.css",
+    "static/js/main.56d047aa.chunk.js"
   ]
 }

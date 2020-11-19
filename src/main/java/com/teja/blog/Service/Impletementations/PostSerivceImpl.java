@@ -37,6 +37,10 @@ public class PostSerivceImpl implements PostService {
         return postRepository.save(post);
     }
 
+    @Override
+    public Post fetchPostById(Long id) {
+        return postRepository.findById(id).orElse(null);
+    }
 
     @Override
     public List<Post> searchPost(String keyword) {

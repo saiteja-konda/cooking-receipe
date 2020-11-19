@@ -157,18 +157,31 @@ public class BootstrapData implements CommandLineRunner {
 //            post.setContent(faker.lorem().paragraph(80));
 //            post.setDescription(faker.lorem().sentence(15));
 //            post.setCategoryId(faker.number().numberBetween(1L, 6L));
-//            post.setImageUrl("https://picsum.photos/id/" + i + "/1265/465");
+//            post.setImageUrl("https://picsum.photos/id/" + i + "/1265/1080");
 //            post.setThumbnailImageUrl("https://picsum.photos/id/" + i + "/825/500");
 //            post.setType(Type[index]);
 //            post.setGenre(Genre[index2]);
+//
 //            post.setViews(faker.number().numberBetween(100, 600));
-//            post.setLikes(faker.number().numberBetween(15, 150));
+//
+//            post.setLikes(faker.number().numberBetween(1, 15));
+//
+//            post.setSad(faker.number().numberBetween(1,15));
+//
+//            post.setSuperb(faker.number().numberBetween(1,15));
+//
+//            post.setAngery(faker.number().numberBetween(1,5));
+//
+//            post.setLaugh(faker.number().numberBetween(1,15));
+//
+//            post.setWow(faker.number().numberBetween(1,15));
+//
 //            System.out.println(post);
 //            postRepository.save(post);
 //
 //        }
 //
-//        for (int i = 0; i < 12; i++) {
+//        for (int i = 0; i < 26; i++) {
 //            Subcribers subcribers = new Subcribers();
 //            subcribers.setName(Name[i]);
 //            subcribers.setEmail(Email[i]);

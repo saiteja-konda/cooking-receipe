@@ -27,17 +27,18 @@ public class Comment {
     @Lob
     private String comment;
     private String commentor;
+    @Lob
     private String skey;
     private int totalReplies;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
     @JoinColumn(name = "post_id")
     private Post post;
 
 
     @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
+//    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     private Date commentedOn = new Date();
     private int votes;
 

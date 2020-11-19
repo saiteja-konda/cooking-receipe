@@ -40,7 +40,16 @@ public class Post  implements Serializable {
     private String content;
     private String genre;
     private int views;
+
     private int likes;
+    private int wow;
+
+    private int superb;
+    private int angery;
+
+    private int sad;
+    private int laugh;
+
     private String imageUrl;
     // TODO rename this as bannerImageUrl
     private String thumbnailImageUrl;
@@ -54,13 +63,13 @@ public class Post  implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "postedOn")
-    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
+//    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     private Date postedOn = new Date();
     private int totalComments;
     @JsonIgnore
     private Long CategoryId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
     @JoinColumn(name = "categoryId", insertable = false, updatable = false)
     private Category category;
@@ -199,6 +208,46 @@ public class Post  implements Serializable {
 
     public void setTags(Set<Tag> tags) {
         this.tags = tags;
+    }
+
+    public int getWow() {
+        return wow;
+    }
+
+    public void setWow(int wow) {
+        this.wow = wow;
+    }
+
+    public int getSuperb() {
+        return superb;
+    }
+
+    public void setSuperb(int superb) {
+        this.superb = superb;
+    }
+
+    public int getAngery() {
+        return angery;
+    }
+
+    public void setAngery(int angery) {
+        this.angery = angery;
+    }
+
+    public int getSad() {
+        return sad;
+    }
+
+    public void setSad(int sad) {
+        this.sad = sad;
+    }
+
+    public int getLaugh() {
+        return laugh;
+    }
+
+    public void setLaugh(int laugh) {
+        this.laugh = laugh;
     }
 
     @Override
