@@ -14,8 +14,6 @@ public class IP2Location {
         IpdataService ipdataService = Ipdata.builder().url(url)
             .key(API_KEY).get();
         IpdataModel model = ipdataService.ipdata(ip);
-//        return model.city() ;
-        System.out.println(model.postal() + " " +  model.city() + "|" + model.region() + "|" + model.countryName() + "|" + model.regionCode() + "|" + model.latitude() + "|" + model.longitude() + "|" + model.countryCode());
-        return model.postal() + " " +  model.city() + "|" + model.region() + "|" + model.countryName() + "|" + model.regionCode() + "|" + model.latitude() + "|" + model.longitude() + "|" + model.countryCode();
+        return model.postal() + ", " +  model.city() + ", " + model.region() + ", " + model.countryName() + ", " + model.regionCode() + ", " + model.latitude() + ", " + model.longitude() + ", " + model.countryCode();
     }
 }

@@ -31,8 +31,20 @@ public class BootstrapData implements CommandLineRunner {
 //        System.out.println("Started in Faker");
         Faker faker = new Faker();
         String[] Type = {"Featured", "News", "Latest", "Trending"};
-        String[] Genre = {"Music", "Entertainment", "Health", "Technology", "Events", "Facts", "Music", "Entertainment", "Health", "Technology", "Events", "Facts"};
-        String[] CData = {"Music", "Entertainment", "Health", "Technology", "Events", "Facts"};
+        String[] Genre = {
+                "Culture",
+                "Entertainment",
+                "Health",
+                "Tech",
+                "Culture",
+                "Facts",
+                "Entertainment",
+                "Entertainment",
+                "Health",
+                "Tech",
+                "Health",
+                "Facts"};
+        String[] CData = {"Entertainment", "Health", "Tech", "Culture", "Facts"};
 
         String[] Email = {"nisi@molestieSedid.com",
                 "mauris@malesuada.com",
@@ -142,54 +154,54 @@ public class BootstrapData implements CommandLineRunner {
         Random r = new Random();
         int randomType = r.nextInt(Type.length);
 
-//        for (int x = 0; x < CData.length; x++) {
-//            Category category = new Category();
-//            System.out.println(CData[x]);
-//            category.setName(CData[x]);
-//            categoryRepository.save(category);
-//        }
-//        for (int i = 0; i < 30; i++) {
-//            int index = (int) (Math.random() * 4);
-//            int index2 = (int) (Math.random() * 12);
-//
-//            Post post = new Post();
-//            post.setTitle(faker.rickAndMorty().character() + " " + faker.chuckNorris().fact());
-//            post.setContent(faker.lorem().paragraph(80));
-//            post.setDescription(faker.lorem().sentence(15));
-//            post.setCategoryId(faker.number().numberBetween(1L, 6L));
-//            post.setImageUrl("https://picsum.photos/id/" + i + "/1265/1080");
-//            post.setThumbnailImageUrl("https://picsum.photos/id/" + i + "/825/500");
-//            post.setType(Type[index]);
-//            post.setGenre(Genre[index2]);
-//
-//            post.setViews(faker.number().numberBetween(100, 600));
-//
-//            post.setLikes(faker.number().numberBetween(1, 15));
-//
-//            post.setSad(faker.number().numberBetween(1,15));
-//
-//            post.setSuperb(faker.number().numberBetween(1,15));
-//
-//            post.setAngery(faker.number().numberBetween(1,5));
-//
-//            post.setLaugh(faker.number().numberBetween(1,15));
-//
-//            post.setWow(faker.number().numberBetween(1,15));
-//
-//            System.out.println(post);
-//            postRepository.save(post);
-//
-//        }
-//
-//        for (int i = 0; i < 26; i++) {
-//            Subcribers subcribers = new Subcribers();
-//            subcribers.setName(Name[i]);
-//            subcribers.setEmail(Email[i]);
-//            System.out.println(subcribers);
-//            subscriberRepository.save(subcribers);
-//
-//
-//        }
+        for (int x = 0; x < CData.length; x++) {
+            Category category = new Category();
+            System.out.println(CData[x]);
+            category.setName(CData[x]);
+            categoryRepository.save(category);
+        }
+        for (int i = 0; i < 20; i++) {
+            int index = (int) (Math.random() * 4);
+            int index2 = (int) (Math.random() * 12);
+
+            Post post = new Post();
+            post.setTitle(faker.rickAndMorty().character() + " " + faker.chuckNorris().fact());
+            post.setContent(faker.lorem().paragraph(80));
+            post.setDescription(faker.lorem().sentence(15));
+            post.setCategoryId(faker.number().numberBetween(1L, 6L));
+            post.setImageUrl("https://picsum.photos/id/" + i + "/1265/1080");
+            post.setThumbnailImageUrl("https://picsum.photos/id/" + i + "/825/500");
+            post.setType(Type[index]);
+            post.setGenre(Genre[index2]);
+
+            post.setViews(faker.number().numberBetween(100, 600));
+
+            post.setLikes(faker.number().numberBetween(1, 15));
+
+            post.setSad(faker.number().numberBetween(1,15));
+
+            post.setSuperb(faker.number().numberBetween(1,15));
+
+            post.setAngery(faker.number().numberBetween(1,5));
+
+            post.setLaugh(faker.number().numberBetween(1,15));
+
+            post.setWow(faker.number().numberBetween(1,15));
+
+            System.out.println(post);
+            postRepository.save(post);
+
+        }
+
+        for (int i = 0; i < 26; i++) {
+            Subcribers subcribers = new Subcribers();
+            subcribers.setName(Name[i]);
+            subcribers.setEmail(Email[i]);
+            System.out.println(subcribers);
+            subscriberRepository.save(subcribers);
+
+
+        }
 
         System.out.println("Fake Posts count" + postRepository.count());
         System.out.println("Fake Subscribers count" + subscriberRepository.count());

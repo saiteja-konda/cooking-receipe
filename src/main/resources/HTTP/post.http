@@ -1,16 +1,6 @@
 
 //CREATE
-GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/genres/count/Entertainment
-###
-GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/genres/count/Music
-###
-GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/genres/count/Health
-###
-GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/genres/count/Technology
-###
-GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/genres/count/Events
-###
-GET  http://teluguphantom.ap-south-1.elasticbeanstalk.com/post/order
+GET  http://teluguphantom.herokuapp.com/post
 ###
 POST   http://teluguphantom.ap-south-1.elasticbeanstalk.com/admin/category
 Content-Type: application/json
@@ -81,7 +71,7 @@ GET http://localhost:8080/post/comments/count/8
 GET  http://localhost:8080/posts/type/Featured
 
 ###
-GET http://localhost:8080/post/tags/Alpha
+GET http://localhost:5000/post/tags/music
 
 ###
 GET http://localhost:8080/post/search/muder

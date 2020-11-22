@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8080/admin/category
+POST https://teluguphantom.herokuapp.com/admin/category
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:8080/category
+GET https://teluguphantom.herokuapp.com/category
 
 ###
 DELETE http://localhost:8080/category/2
